@@ -1,0 +1,72 @@
+﻿
+
+<div class="col-md-12" style="padding-bottom:10px;height:400px;overflow:hidden;">
+    <canvas id="canvas" class="factoranalysiscanvas"></canvas>
+    <br />
+    <button id="addA1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A1</button>
+    <button id="addA2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A2</button>
+    <button id="addA3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A3</button>
+    <button id="addA4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A4</button>
+    <br />
+    <button id="addB1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B1</button>
+    <button id="addB2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B2</button>
+    <button id="addB3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B3</button>
+    <button id="addB4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B4</button>
+    <br />
+    <button id="addC1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C1</button>
+    <button id="addC2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C2</button>
+    <button id="addC3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C3</button>
+    <button id="addC4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C4</button>
+    <br />
+    <button id="addD1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D1</button>
+    <button id="addD2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D2</button>
+    <button id="addD3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D3</button>
+    <button id="addD4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D4</button>
+</div>
+<div class="col-md-12" style="padding-bottom:10px;">
+    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-factoranalysis" role="grid" aria-describedby="datatable-editable_info">
+        <thead>
+            <tr role="row">
+                <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;"></th>
+                <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">Possible cause</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 15%;">What</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">Who</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">When</th>
+                <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">Result</th>
+                <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 15%">Edit</th>
+            </tr>
+        </thead>
+        <tbody id="factoranalysisbody"></tbody>
+    </table>
+</div>
+
+
+<div class="col-md-12">
+
+</div>
+<div id="dialog-factoranalysis" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Are you sure?</h2>
+        </div>
+        <div class="panel-body bk-noradius">
+            <div class="modal-wrapper">
+                <div class="modal-icon">
+                    <i class="fa fa-question-circle"></i>
+                </div>
+                <div class="modal-text">
+                    <h4>Primary</h4>
+                    <p>Are you sure that you want to delete this record?</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button id="dialogConfirm-factoranalysis" class="btn btn-primary modal-confirm">Confirm</button>
+                    <button id="dialogCancel-factoranalysis" class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

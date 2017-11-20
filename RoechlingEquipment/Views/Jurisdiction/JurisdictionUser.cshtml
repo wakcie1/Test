@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "JurisdictionUser";
+}
+
+@model Model.ViewModel.User.UserSearchRsultModel
+
+<table class="table table-bordered table-striped dataTable no-footer" role="grid" id="userDt">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 30px;"><input type="checkbox" id="chkAll" /></th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Name(CN)</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Name(EN)</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">JobNumber</th> 
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">PhoneNum</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Title</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Account</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Models != null)
+        {
+            foreach (var item in Model.Models)
+            {
+                <tr class="gradeA odd" role="row">
+                    <td><input type="checkbox" id="chk_@item.UserId" name="checkUser" data-userId="@item.UserId"/></td>
+                    <td>@item.BUName</td>
+                    <td>@item.BUEnglishName</td>
+                    <td>@item.BUJobNumber</td> 
+                    <td>@item.BUPhoneNum</td>
+                    <td>@item.BUTitle</td>
+                    <td>@item.Account</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align:center">NoResult</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination" style="float:right">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" class="first" onclick="SearchUserList(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="prev" onclick="SearchUserList(@(Model.Page.CurrentPage-1))">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="SearchUserList(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" class="next" onclick="SearchUserList(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="last" onclick="SearchUserList(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}

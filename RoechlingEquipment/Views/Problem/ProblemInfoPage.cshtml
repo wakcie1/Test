@@ -1,0 +1,273 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Problem Info</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <form id="problem-form" class="form-horizontal" novalidate="novalidate">
+            <label class="col-md-1 control-label">ProblemNo</label>
+            <span class="col-md-2" style="padding-top:7px" id="problemno"></span>
+            <label class="col-md-1 control-label" for="">Process</label>
+            <div class="col-md-2">
+                <select id="problemprocess" name="problemprocess" class="form-control width140" size="1"></select>
+            </div>
+            <label class="col-md-1 control-label" for="">Machine#</label>
+            <div class="col-md-2">
+                <input type="text" id="machines" class="col-xs-2 form-control width140" placeholder="">
+            </div>
+            <label class="col-md-1 control-label" for="">Tool#</label>
+            <div class="col-md-2">
+                <input type="text" id="tools" class="col-xs-2 form-control width140" placeholder="">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="">WorkOrder</label>
+            <div class="col-md-2">
+                <input type="text" id="workorder" class="col-xs-2 form-control width140" placeholder="">
+            </div>
+            <label class="col-md-1 control-label" for="">SAP</label>
+            <div class="col-md-2">
+                <input type="text" id="sappn" class="col-xs-2 form-control width140" placeholder="">
+                <input type="hidden" id="materialId" value="0" />
+            </div>
+            <label class="col-md-1 control-label" for="">PartName</label>
+            <div class="col-md-2">
+                <input type="text" id="partname" class="col-xs-2 form-control width140" placeholder="">
+            </div>
+            <label class="col-md-1 control-label" for="">Customer</label>
+            <div class="col-md-2">
+                <input type="text" id="customer" class="col-xs-2 form-control width140" placeholder="">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="">Date<span style="color:red">*</span></label>
+            <div class="col-md-2">
+                <input type="text" id="problemdate" class="col-xs-2 form-control width140" placeholder="" required>
+            </div>
+            <label class="col-md-1 control-label" for="">Source</label>
+            <div class="col-md-2">
+                <select id="problemsource" name="problemsource" class="form-control width140" size="1"></select>
+            </div>
+            <label class="col-md-1 control-label" for="">DefectType</label>
+            <div class="col-md-2">
+                <select id="problemdefecttype" name="problemdefecttype" class="form-control width140" size="1"></select>
+            </div>
+            <label class="col-md-1 control-label" for="">DefectCode</label>
+            <div class="col-md-2">
+                <select id="problemdefectcode" name="problemdefectcode" class="form-control width140" size="1"></select>
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="">DefectQty</label>
+            <div class="col-md-2">
+                <input type="number" id="problemdefectqty" class="col-xs-2 form-control width140" placeholder="">
+            </div>
+            <label class="col-md-1 control-label" for="">ShiftType</label>
+            <div class="col-md-2">
+                <select id="problemshifttype" name="problemshifttype" class="form-control width140" size="1"></select>
+            </div>
+            <div class="col-md-3">
+                <div class="checkbox-custom checkbox-inline">
+                    <input type="checkbox" id="problemisrepeat" name="problemisrepeat" value="1">
+                    <label for="problemisrepeat"> Repeated</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="problemseverity">Severity</label>
+            <div class="col-md-2">
+                <select id="problemseverity" name="problemseverity" class="form-control width140" size="1"></select>
+            </div>
+            <label class="col-md-1 control-label" for="problestatus">Status</label>
+            <div class="col-md-8">
+                <select id="problestatus" name="problestatus" class="form-control width140" size="1"></select>
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="problemdescription">Problem Description</label>
+            <div class="col-md-11">
+                <textarea id="problemdescription" name="problemdescription" rows="9" class="form-control" placeholder="Content.."></textarea>
+            </div>
+            <div class="col-md-12 line">
+            </div>
+
+            <label class="col-md-1 control-label" for="textarea-input">Upload Picture (OK)</label>
+            <div class="col-md-3">
+                <div id="selectImg1" class="selectImg">
+                    <span class="uploading"><i></i>upload img1</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload1" name="imgUpload1" class="uploadButton" />
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose1" class="imgClose none" />
+                </div>
+                <input type="hidden" id="problempic1" />
+            </div>
+            <div class="col-md-3">
+                <div id="selectImg2" class="selectImg">
+                    <span class="uploading"><i></i>upload img2</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload2" name="imgUpload2" class="uploadButton" />
+
+
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose2" class="imgClose none" />
+                </div>
+                <input type="hidden" id="problempic2" />
+            </div>
+            <div class="col-md-3">
+                <div id="selectImg3" class="selectImg">
+                    <span class="uploading"><i></i>upload img3</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload3" name="imgUpload3" class="uploadButton" />
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose3" class="imgClose none" />
+                </div>
+                <input type="hidden" id="problempic3" />
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="textarea-input">Upload Picture (NG)</label>
+            <div class="col-md-3">
+                <div id="selectImg4" class="selectImg">
+                    <span class="uploading"><i></i>upload img4</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload4" name="imgUpload4" class="uploadButton" />
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose4" class="imgClose none" />
+                </div>
+                <input type="hidden" id="problempic4" />
+            </div>
+            <div class="col-md-3">
+                <div id="selectImg5" class="selectImg">
+                    <span class="uploading"><i></i>upload img5</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload5" name="imgUpload5" class="uploadButton" />
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose5" class="imgClose none" />
+                </div>
+                <input type="hidden" id="problempic5" />
+            </div>
+            <div class="col-md-3">
+                <div id="selectImg6" class="selectImg">
+                    <span class="uploading"><i></i>upload img6</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload6" name="imgUpload6" class="uploadButton" />
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose6" class="imgClose none" />
+                </div>
+                <input type="hidden" id="problempic6" />
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-12 line">
+            </div>
+            @*<div class="col-md-12">
+                    <div class="uploadAttachment">
+                        <button class="bk-margin-5 btn btn-default" type="button"><i class="fa  fa-paperclip"></i> upload</button>
+                        <input type="file" class="uploadfileButton" />
+                    </div>
+                </div>
+                <div class="col-md-12 line">
+                </div>*@
+            <div class="col-md-12">
+                <button class="bk-margin-right-5 btn btn-info hidden" id="submitProblem">Submit</button>
+                <button class="bk-margin-right-5 btn btn-dark hidden" id="editProblem">Edit</button>
+                <button type="reset" id="resetProblem" class="bk-margin-right-5 btn btn-default hidden">Reset</button>
+                @*<button type="button" class="bk-margin-right-5 btn btn-success hidden" id="approveProblem">Approve</button>
+                <button type="button" class="bk-margin-right-5 btn btn-warning hidden" id="rejectProblem">Reject</button>*@
+            </div>
+        </form>
+    </div>
+</div>
+<div id="solvingteamTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Problem Solving Team</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ProblemSolvingTeam")
+    </div>
+</div>
+
+<div id="qualityalertTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Quality Alert</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ProblemQualityAlert")
+    </div>
+</div>
+<div id="sortingactivityTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Sorting Activity</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ProblemSortingActivity")
+    </div>
+</div>
+<div id="problemnextTab" class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-12" style="text-align:right;padding-right:0px">
+            <button type="button" class="bk-margin-left-5 btn btn-danger hidden" id="closeProblem1">Close Problem</button>
+            <button class="bk-margin-left-5 btn btn-warning hidden" id="problemNext1">Next<i class="fa fa-mail-forward"></i></button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿<style>
+    .dropzone .dz-default.dz-message {
+        background-image: url('../../Content/assets/plugins/dropzone/images/add.jpg');
+        background-size: 200px 200px;
+        height: 200px;
+        width: 200px;
+        margin-left: -108px;
+        margin-top: -100.5px;
+        top: 50%;
+        left: 54%;
+    }
+
+    .dropzone {
+        min-height: 200px;
+    }
+</style>
+<form id="suggestAdd-form" class="form-horizontal" novalidate="novalidate">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6><i class="fa  fa-check-circle-o bk-fg-warning"></i>Suggest</h6>
+        </div>
+        <input type="hidden" id="id" />
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="requireType" class="col-md-3 control-label">Require Type<span class="required">*</span></label>
+                <div class="col-md-5">
+                    <select id="requireType" name="requireType" class="form-control" size="1" required></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="phrase">Phrase<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <select id="phrase" name="phrase" class="form-control" size="1" required></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="assignTo">Assign To<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <input type="text" id="assignTo" name="assignTo" class="form-control" placeholder=" " required>
+                    <input type="hidden" id="assignToNo" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="uploadPicture">Upload Picture<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <div class="selectImg">
+                        <span class="uploading"><i></i>upload img</span>
+                        <p class="tips">
+                            format:jpg、png
+                        </p>
+                        <p class="tips">
+                            size:140*140px
+                        </p>
+                        <div class="loading none">
+                            <p>loading...</p>
+                        </div>
+                        <input type="file" id="imgUpload" name="imgUpload" class="uploadButton" />
+                        <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose" class="imgClose none" />
+                    </div>
+                    <input type="hidden" id="uploadPicture" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="assignTo">Description<span class="required">*</span> </label>
+                <div class="col-sm-7">
+                    <textarea id="description" name="description" rows="10" style="width:210px" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button class="btn btn-primary" id="addSuggestBtn">Submmit</button>
+                    <button type="reset" id="ResetSuggest" class="bk-margin-right-5 btn btn-default">Reset</button>
+                    <button class="btn btn-default modal-dismiss" id="cancelSuggestAddBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<input type="hidden" id="requireTypeUrl" value="@Url.Action("GetRequireTypeList","Suggest",new { isNeedDefalut = false })" />
+<input type="hidden" id="phraseUrl" value="@Url.Action("GetPhraseList","Suggest",new { isNeedDefalut = false })" />
+<input type="hidden" id="assignToUrl" value="@Url.Action("UserAutoComplete","Home")" />
+<script src="~/Content/Suggest/SuggestAdd.js"></script>
+<script language="javascript">
+    SuggestAddPageInit();
+</script>

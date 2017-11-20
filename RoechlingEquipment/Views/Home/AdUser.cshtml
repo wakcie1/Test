@@ -1,0 +1,139 @@
+﻿@using Common
+@{
+    ViewBag.Title = "Aduser";
+}
+
+<div class="panel-heading">
+    <h2 class="panel-title">AdUser</h2>
+</div>
+<form id="userAdd" class="form-horizontal mb-lg" novalidate="novalidate">
+    <input type="hidden" id="isExistAccount" /> 
+    <div class="panel-body">
+        <div class="form-group">
+            <label class="col-md-2 control-label">ChineseName<span class="required">*</span></label>
+            <div class="col-md-4">
+                <input type="text" name="chineseName" class="form-control" placeholder="ChineseName" maxlength="20" id="chineseName" required>
+            </div>
+            <label class="col-md-2 control-label">EnglishName<span class="required">*</span></label>
+            <div class="col-md-4">
+                <input type="text" name="englishName" class="form-control" placeholder="EnglishName" maxlength="20" id="englishName" required>
+            </div>
+        </div> 
+        <div></div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Account</label>
+            <div class="col-md-4">
+                <input type="text" name="account" class="form-control" placeholder="Account" maxlength="20" id="account" >
+            </div>
+            <label class="col-md-2 control-label">Post title</label>
+            <div class="col-md-4">
+                <input type="text" name="title" class="form-control" placeholder="PostTitle" id="title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Gender</label>
+            <div class="col-md-4">
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="man" name="sex-radios" value="1" checked>
+                    <label for="man">Male</label>
+                </div>
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="woman" name="sex-radios" value="2">
+                    <label for="woman"> Female</label>
+                </div>
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="other" name="sex-radios" value="0">
+                    <label for="other"> Other</label>
+                </div>
+            </div>
+            <label class="col-md-2 control-label">state</label>
+            <div class="col-md-4">
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="job" name="valid-radios" value="1" checked>
+                    <label for="job"> Job</label>
+                </div>
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="quit" name="valid-radios" value="0">
+                    <label for="quit"> Quit</label>
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label class="col-md-2 control-label">state<span class="required">*</span></label>
+            <div class="col-md-4">
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="job" name="valid-radios" value="1" checked>
+                    <label for="man"> Job</label>
+                </div>
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="quit" name="valid-radios" value="0">
+                    <label for="woman"> Quit</label>
+                </div>
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label class="col-md-2 control-label">Telephone</label>
+            <div class="col-sm-4">
+                <input type="text" name="phoneNum" class="form-control" placeholder="Telephone"   id="phoneNum" >
+            </div>
+            <label class="col-md-2 control-label">ExtensionPhone </label>
+            <div class="col-md-4">
+                <input type="text" name="extensionPhone" class="form-control" placeholder="ExtensionPhone"   id="extensionPhone" >
+            </div> 
+        </div> 
+        <div class="form-group">
+            <label class="col-md-2 control-label">MobilePhone</label>
+            <div class="col-md-4">
+                <input type="text" name="mobilePhone" class="form-control" placeholder="MobilePhone"  id="mobilePhone" >
+            </div>
+            <label class="col-md-2 control-label">Email</label>
+            <div class="col-md-4">
+                <input type="email" name="email" class="form-control" placeholder="Email" maxlength="50" id="email" >
+            </div>
+        </div>  
+        <div class="form-group">
+            <label class="col-md-2 control-label">Department</label>
+            <div class="col-md-4">
+                @*@Html.DropDownList("depart", ViewBag.dpList as IEnumerable<SelectListItem>, new { @id = "depart", @class = "form-control" })*@
+                <input type="text" name="depart" class="form-control" placeholder="DepartName"  id="depart" >
+            </div>
+            <label class="col-md-2 control-label">Position </label>
+            <div class="col-md-4">
+                <input type="text" name="position" class="form-control" placeholder="Position"  id="position"  >
+            </div>
+        </div> 
+        <div class="form-group">
+          
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Portrait</label>
+            <div class="col-md-4">
+                <div class="selectImg">
+                    <span class="uploading"><i></i>upload img</span>
+                    <p class="tips">
+                        format:jpg、png
+                    </p>
+                    <p class="tips">
+                        size:140*140px
+                    </p>
+                    <div class="loading none">
+                        <p>loading...</p>
+                    </div>
+                    <input type="file" id="imgUpload" name="imgUpload" class="uploadButton" />
+                    <img src="@Url.Content("~/Content/Home/cross.png")" id="imgClose" class="imgClose none" />
+                </div>
+                <input type="hidden" id="avatars" />
+            </div>
+        @*</div>
+
+        <div class="form-group">*@
+            <div class="col-md-6 text-right" style="padding-top:130px">
+                <button class="btn btn-primary" id="userSubmit">Confirm</button>
+                <button type="reset" id="ResetUser" class="bk-margin-right-5 btn btn-default">Reset</button>
+                <button class="btn btn-default modal-dismiss">Cancel</button>
+            </div>
+        </div>
+    </div>
+   
+</form>

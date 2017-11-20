@@ -1,0 +1,30 @@
+﻿<div class="panel-heading">
+    <h2 class="panel-title">ImportMachine</h2>
+</div>
+<div class="panel-body bk-noradius">
+    @*@using (Html.BeginForm("ImportMachine", "Material", FormMethod.Post,
+                                new { enctype = "multipart/form-data", id = "imprtMachine", @class = "form-horizontal mb-lg" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="editor-field">
+                <div class="col-md-5">
+                    @Html.TextBox("file", "", new { type = "file" })
+                </div>
+                <div class="col-md-7" style="text-align:center">
+                    <a id="btnMachineTempDown" style="color:#428bca" data-url="@Url.Action("MachineFile","Material")">Temp download</a>
+                    <button id="Machineupload" class="bk-margin-right-5 btn btn-primary">Upload</button>
+                    <button class="btn btn-default" id="MachineuploadCancel">Cancel</button>
+                </div>
+            </div>
+        }*@
+    <div class="editor-field">
+        <div class="col-md-5">
+            @Html.TextBox("file", "", new { type = "file", Id = "machinefile" })
+        </div>
+        <div class="col-md-7" style="text-align:center">
+            <a id="btnMachineTempDown" style="color:#428bca" data-url="@Url.Action("MachineFile","Material")">Temp download</a>
+            <button id="Machineupload" class="bk-margin-right-5 btn btn-primary">Upload</button>
+            <button class="btn btn-default" id="MachineuploadCancel">Cancel</button>
+        </div>
+    </div>
+</div>

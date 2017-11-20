@@ -1,0 +1,177 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@using Common
+<!-- Page Header -->
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="#"><i class="icon fa fa-search"></i>Search</a></li>
+        </ol>
+    </div>
+    <div class="pull-right">
+    </div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-default bk-bg-white">
+        <div class="panel-heading bk-bg-white">
+            <h6><i class="fa fa-indent red"></i>Search</h6>
+            <div class="panel-actions">
+                <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+                      @*<a href="#" class="btn-closeiniframe"><i class="fa fa-times"></i></a>*@
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block">Date From</label> 
+                    <div class=" col-md-8 col">
+                        <div class="input-daterange input-group input-append date ">
+                            <input type="text" class="form-control form_datetime" name="From" id="From">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class=" col-md-4 help-block">To</label>
+                    <div class=" col-md-8 col">
+                        <div class="input-daterange input-group input-append date ">
+                            <input type="text" class="form-control form_datetime" name="To" id="To">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class=" col-md-4 help-block">Process</label>
+                    <div class="col-md-8 col">
+                        <select id="process" name="process" class="form-control" size="1"></select>
+                    </div>
+                </div>
+                <div class="col-xs-3" style="padding-right:0px">
+                    <label class=" col-md-4 help-block">Status</label>
+                    <div class="col-md-8 col">
+                        <select id="status" name="status" class="form-control" size="1"></select>
+                    </div>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-3">
+                    <label class=" col-md-4 help-block">WorkOrder</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="workorder" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class=" col-md-4 help-block">Tooling</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="toolingNo" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <span class="col-md-4 help-block">Machine</span>
+                    <div class="col-md-8 col">
+                        <input type="text" id="machineNo" class=" form-control " placeholder="">
+                    </div>
+                </div>
+                <div class="col-xs-3" style="padding-right:0px">
+                    <label class="col-md-4 help-block">Severity</label>
+                    <div class="col-md-8 col">
+                        <select id="problemSeverity" name="problemSeverity" class="form-control" size="1"></select>
+                    </div>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block" for="repeatable">Repeatable</label>
+                    <div class="col-md-8 col">
+                        <select id="repeatable" name="repeatable" class="form-control" size="1"></select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block" for="sapNo">Sap#</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="sapNo" class=" form-control " placeholder="">
+                    </div>
+                </div>
+                <div class="col-xs-3" >
+                    <label class="col-md-4 help-block" for="partname">Part Name</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="partname" class=" form-control " placeholder="">
+                    </div>
+                </div>
+                <div class="col-xs-3" style="padding-right:0px">
+                    <label class="col-md-4 help-block" for="customer">Customer</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="customer" class=" form-control " placeholder="">
+                    </div>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div>
+            <div class="form-group"> 
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block">Next Report Date From</label>
+                    <div class=" col-md-8 col">
+                        <div class="input-daterange input-group input-append date ">
+                            <input type="text" class="form-control form_datetime" name="nextReportDateFrom" id="nextReportDateFrom">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block">Next Report Date To</label>
+                    <div class=" col-md-8 col">
+                        <div class="input-daterange input-group input-append date ">
+                            <input type="text" class="form-control form_datetime" name="nextReportDateTo" id="nextReportDateTo">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block" for="source">Source</label>
+                    <div class="col-md-8 col">
+                        <select id="source" name="source" class="form-control" size="1"></select>
+                    </div>
+                </div> 
+                <div class="col-xs-3" style="padding-right:0px">
+                    <label class="col-md-4 help-block" for="defectType">Defect Type</label>
+                    <div class="col-md-8 col">
+                        <select id="defectType" name="defectType" class="form-control" size="1"></select>
+                    </div>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div> 
+                
+            
+            <div class="form-group">
+                <div class="col-xs-8">
+                </div>
+                <div class="col-xs-4" style="text-align:right;padding-right:0px">
+                    <button type="button" class="bk-margin-left-5 btn btn-primary btn-sm" id="Search"><i class="fa fa-search"></i> Search</button>
+                    <a class="bk-margin-left-5 btn btn-danger btn-sm" id="btnExport"><i class="fa fa-mail-forward"></i> Export</a>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div>
+            <div class="form-group" id="searchResult"></div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="processUrl" value="@Url.Action("GetProcessList", "Problem", new { isNeedDefalut = true })" />
+<input type="hidden" id="problemSeverityUrl" value="@Url.Action("GetProblemSeverityList", "Problem", new { isNeedDefalut = true })" />
+<input type="hidden" id="problemRepeatableUrl" value="@Url.Action("GetRepeatableList", "Problem", new { isNeedDefalut = true })" />
+<input type="hidden" id="statusUrl" value="@Url.Action("GetProblemStatusList","Problem", new { isNeedDefalut = true })" />
+<input type="hidden" id="sourceUrl" value="@Url.Action("GetSourceList","Problem", new { isNeedDefalut = true })" />
+<input type="hidden" id="defectTypeUrl" value="@Url.Action("GetDefectCodeTypeList","Problem", new { isNeedDefalut = true })" />
+
+<script src="@Url.Content("~/Content/Problem/ProblemSearch.js")?v=@CommonHelper.JsVision()"></script>

@@ -1,0 +1,156 @@
+﻿@using Common
+@{
+    ViewBag.Title = "JurisdictionRolePackageEdit";
+}
+
+@model Model.ViewModel.Jurisdiction.JurisdictionByRoleGroupEditViewModel
+<script src="@Url.Content("~/Content/assets/vendor/js/jquery-2.1.1.min.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js")?v=@CommonHelper.JsVision()"></script>
+@Html.RenderCss("/Content/assets/vendor/bootstrap/css/bootstrap.min.css", "/Content/assets/css/style.css",
+    "/Content/assets/css/add-ons.min.css", "/Content/assets/plugins/magnific-popup/css/magnific-popup.css",
+    "/Content/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css")
+@Html.RenderCss("/Content/assets/plugins/select2/css/select2.min.css", "/Content/assets/plugins/select2/select2.css")
+
+<style>
+    .select2-chosen {
+        margin-right: 26px;
+        display: inline !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: none;
+        width: auto;
+    }
+    .label {
+        display:inline-block;
+    }
+    #JurisdictionEdit button {
+        min-width:69px;
+    }
+</style>
+
+
+
+<input type="hidden" id="RoleId" />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">JurisdictionEdit</h2>
+    </div>
+    <div class="panel-body bk-noradius">
+        <form id="JurisdictionEdit" class="form-horizontal mb-lg" novalidate="novalidate">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">GroupName</label>
+                <div class="col-sm-4">
+                    <input type="text" name="Name" class="form-control" id="txtName" disabled>
+                </div>
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-4">
+                    <input type="text" placeholder="Chinese Or English Name" class="form-control" id="Name" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Selected User</label>
+                <div class="bootstrap-tagsinput form-control col-sm-9" style="width: 70%;margin-left: 14px;height:100%;min-height:30px;border-radius:3px;max-height:90px;overflow-y:scroll"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4"></div>
+                <div class="col-md-8 text-right">
+                    <button class="btn btn-primary" id="JurisdictionSave">Confirm</button>
+                    <button id="btnSearch" class="btn btn-success">Search</button>
+                    <button type="reset" id="JurisdictionReset" class="bk-margin-right-5 btn btn-default hidden">Reset</button>
+                    <button id="btnSelect" class="btn btn-danger">Select</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+            <div class="form-group">
+                @*<label class="col-sm-3 control-label">Not Selected User</label>
+                @Html.DropDownList("roleGroup", ViewBag.UserList as IEnumerable<SelectListItem>, new { @id = "roleGroup", @class = "col-sm-9", @style = "margin-left: 14px; width: 70%;" })*@
+                <div id="userList"></div>
+            </div>
+        </form>
+    </div>
+    @*<div class="panel-footer">
+        <div class="row">
+            
+        </div>
+    </div>*@
+</div>
+@Html.RenderJs("/Content/assets/plugins/select2/js/select2.full.min.js", "/Content/assets/plugins/select2/select2.js")
+<script type="text/javascript">
+    $(function () {
+        SearchUserList(1);
+        //$("#roleGroup").select2();
+        //$("#roleGroup").on("change", function (event) {
+        //    event.preventDefault();
+        //    var text = $("#roleGroup").find("option:selected").text();
+        //    var selectvalue = $("#roleGroup").val();
+        //    var html = "<span class='tag label label-primary'>" + text + "<span data-role='remove' data-groupId=" + selectvalue + "></span></span>";
+        //    //$(".tag:last").after(html);
+        //    $(".bootstrap-tagsinput").append(html);
+        //    $("#roleGroup").find("option:selected").remove();
+        //});
+        $(".bootstrap-tagsinput").on('click', "span[data-role='remove']", function () {
+            //var thisvalue = $(this).attr("data-groupId");
+            //var thistext = $(this).parent().text();
+            //$("#roleGroup").append("<option value='" + thisvalue + "'>" + thistext + "</option>");
+            $(this).parent().remove();
+        });
+        //$("#roleGroup").next("span").css("margin-left", "14px");
+
+        $("#userList").on("click", "#chkAll", function () {
+            if (this.checked) {
+                $("input[name='checkUser']").prop("checked", true);
+            } else {
+                $("input[name='checkUser']").prop("checked", false);
+            }
+        });
+        $("#userList").on("click", "input[name='checkUser']", function () {
+            allchk();
+        });
+        $("#btnSelect").click(function (event) {
+            event.preventDefault();
+            $("input[name='checkUser']:checked").each(function () {
+                var selectedUserId = $(this).attr("data-userId");
+                if ($("span[data-groupId='" + selectedUserId + "']").length < 1)
+                {
+                    var text = $(this).parents("tr.gradeA.odd").children("td:eq(1)").html() + "(" + $(this).parents("tr.gradeA.odd").children("td:eq(2)").html() + ")";
+                    var html = "<span class='tag label label-primary'>" + text + "<span data-role='remove' data-groupId=" + selectedUserId + "></span></span>";
+                    $(".bootstrap-tagsinput").append(html);
+                }
+            });
+            
+        });
+
+        $("#btnSearch").click(function (event) {
+            event.preventDefault();
+            SearchUserList(1);
+        });
+    });
+
+    function SearchUserList(pageIndex) {
+        var url = '@Url.Action("JurisdictionUser", "Jurisdiction")';
+        var params = {
+            CurrentPage: pageIndex,
+            Name:$("#Name").val(),
+            JobNumber: $("#txtJobNumber").val()
+        }
+        $.post(url, params, function (data) {
+            $("#userList").empty().append(data);
+        });
+    }
+
+    function allchk() {
+        var chknum = $("input[name='checkUser']").length;
+        var chk = 0;
+        $("input[name='checkUser']").each(function () {
+            if ($(this).prop("checked") == true) {
+                chk++;
+            }
+        });
+        if (chknum == chk) {
+            $("#chkAll").prop("checked", true);
+        } else {
+            $("#chkAll").prop("checked", false);
+        }
+    }
+</script>

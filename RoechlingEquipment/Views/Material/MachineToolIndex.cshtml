@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@using Common
+<!-- Page Header -->
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="#"><i class="icon fa fa-cogs"></i>Setting</a></li>
+            <li><a href="#">Machine</a></li>
+        </ol>
+    </div>
+    <div class="pull-right">
+    </div>
+</div>
+<div class="panel-body panel-bodynopadding">
+    <div class="tabs">
+        <ul class="nav nav-tabs" id="tabs">
+            <li>
+                <a id="btnma1Tab" href="#ma1Tab" data-toggle="tab"><i class="fa fa-archive"></i> Injection M/C</a>
+            </li>
+            <li>
+                <a id="btnma2Tab" href="#ma2Tab" data-toggle="tab"><i class="fa fa-wrench"></i> Dryer</a>
+            </li>
+            <li>
+                <a id="btnma3Tab" href="#ma3Tab" data-toggle="tab"><i class="fa fa-wrench"></i> Blender Mixer</a>
+            </li>
+            <li>
+                <a id="btnma4Tab" href="#ma4Tab" data-toggle="tab"><i class="fa fa-wrench"></i> Tool</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="ma1Tab" class="tab-pane">
+                @Html.Partial("Machine1InfoPage")
+            </div>
+            <div id="ma2Tab" class="tab-pane">
+                @Html.Partial("Machine2InfoPage")
+            </div>
+            <div id="ma3Tab" class="tab-pane">
+                @Html.Partial("Machine3InfoPage")
+            </div>
+            <div id="ma4Tab" class="tab-pane">
+                @Html.Partial("Machine4InfoPage")
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="MachineId" value="0" />
+<input type="hidden" id="MachineClassification" value="0" />
+<div id="machineModalForm" class="modal-block modal-block-primary bigsize mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("MachineOperate")
+    </div>
+</div>
+<div id="importMachineModal" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("ImportMachine")
+    </div>
+</div>
+<div id="machineToolForm" class="modal-block modal-block-primary bigsize mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("MaterialToolAddAndEdit")
+    </div>
+</div> 
+
+<script src="@Url.Content("~/Content/Material/Machine.js")?v=@CommonHelper.JsVision()"></script>

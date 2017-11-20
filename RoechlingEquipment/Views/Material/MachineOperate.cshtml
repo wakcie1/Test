@@ -1,0 +1,107 @@
+﻿<form id="machine-form" class="form-horizontal" novalidate="novalidate">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6><i class="fa  fa-check-circle-o bk-fg-warning"></i>Machine</h6>
+            <div class="panel-actions">
+            </div>
+        </div>
+        <input type="hidden" id="id" />
+        <div class="panel-body">
+            <label class="col-md-2 control-label">Fixture No.<span class="required">*</span></label>
+            <div class="col-md-4">
+                <input type="text" id="bmfixtureno" name="bmfixtureno" class="form-control" required>
+            </div>
+            <label class="col-md-2 control-label">Equipment No.</label>
+            <div class="col-md-4">
+                <input type="text" id="bmequipmentno" name="bmequipmentno" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Equipment Name</label>
+            <div class="col-md-4">
+                <input type="text" id="bmequipmentname" name="bmequipmentname" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Type</label>
+            <div class="col-md-4">
+                <input type="text" id="bmtype" name="bmtype" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">SerialNumber</label>
+            <div class="col-md-4">
+                <input type="text" id="bmserialnumber" name="bmserialnumber" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Quantity</label>
+            <div class="col-md-4">
+                <input type="number" id="bmquantity" name="bmquantity" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Manufactured Date</label>
+            <div class="col-md-4">
+                <input type="text" id="bmmanufactureddate" name="bmmanufactureddate" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Power</label>
+            <div class="col-md-4">
+                <input type="text" id="bmpower" name="bmpower" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">OutlineDimension</label>
+            <div class="col-md-4">
+                <input type="text" id="bmoutlinedimension" name="bmoutlinedimension" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Ability</label>
+            <div class="col-md-4">
+                <input type="text" id="bmability" name="bmability" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">PressureAir</label>
+            <div class="col-md-4">
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="bmneedpressureairY" name="bmneedpressureair-radios" value="1">
+                    <label for="bmneedpressureairY"> Yes</label>
+                </div>
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="bmneedpressureairN" name="bmneedpressureair-radios" value="0" checked>
+                    <label for="bmneedpressureairN"> No</label>
+                </div>
+            </div>
+            <label class="col-md-2 control-label">CoolingWater</label>
+            <div class="col-md-4">
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="bmneedcoolingwaterY" name="bmneedcoolingwater-radios" value="1">
+                    <label for="bmneedcoolingwaterY"> Yes</label>
+                </div>
+                <div class="radio-custom radio-inline">
+                    <input type="radio" id="bmneedcoolingwaterN" name="bmneedcoolingwater-radios" value="0" checked>
+                    <label for="bmneedcoolingwaterN"> No</label>
+                </div>
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">IncomingDate</label>
+            <div class="col-md-4">
+                <input type="text" id="bmincomingdate" name="bmincomingdate" class="form-control">
+            </div>
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Remarks</label>
+            <div class="col-md-10">
+                <input type="text" id="bmremarks" name="bmremarks" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+                <div class="col-md-4">
+                </div>
+                <div class="col-sm-8" style="text-align:right;padding-right:0px">
+                    <button class="bk-margin-right-5 btn btn-info" id="operateMachine">Submit</button>
+                    <button type="reset" id="resetMachine" class="bk-margin-right-5 btn btn-default">Reset</button>
+                    <button type="button" class="bk-margin-right-5 btn btn-info" id="cancelMachine">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

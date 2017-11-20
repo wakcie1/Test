@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "SuggestEdit";
+}
+
+
+<form id="suggestEdit-form" class="form-horizontal" novalidate="novalidate">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6><i class="fa  fa-check-circle-o bk-fg-warning"></i>SuggestEdit</h6>
+        </div>
+        <input type="hidden" id="id" />
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="feedBack" class="col-md-3 control-label">FeedBack<span class="required">*</span></label>
+                <div class="col-md-5">
+                    <input type="text" id="feedBack" name="feedBack" class="form-control"  required/> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="status">Status<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <select id="status" name="status" class="form-control" size="1" required></select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button class="btn btn-primary" id="EditSuggestBtn">Submmit</button>
+                    <button type="reset" id="ResetUser" class="bk-margin-right-5 btn btn-default">Reset</button>
+                    <button class="btn btn-default modal-dismiss" id="cancelSuggestEditBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<input type="hidden" id="statusUrl" value="@Url.Action("GetSuggestStatusList","Suggest",new { isNeedDefalut = false })" /> 
+<script src="~/Content/Suggest/SuggestEdit.js"></script>

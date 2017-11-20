@@ -1,0 +1,89 @@
+﻿@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+<style>
+    .row {
+        /*margin: 8px;*/
+    }
+
+    .form-group {
+        margin-left: 17px;
+    }
+
+    .col {
+        padding-right: 0px;
+    }
+</style>
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="#"><i class="icon fa fa-comments-o"></i>Suggestions</a></li>
+        </ol>
+    </div>
+    <div class="pull-right">
+    </div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-default bk-bg-white">
+        <div class="panel-heading bk-bg-white">
+            <h6><i class="fa fa-indent red"></i>Suggestions</h6>
+            <div class="panel-actions">
+                <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+                      @*<a href="#" class="btn-closeiniframe"><i class="fa fa-times"></i></a>*@
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-group form-horizontal ">
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block">Date From</label>
+                    <div class=" col-md-8 col">
+                        <div class="input-daterange input-group input-append date ">
+                            <input type="text" class="form-control form_datetime" name="From" id="From">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class=" col-md-4 help-block">To</label>
+                    <div class=" col-md-8 col">
+                        <div class="input-daterange input-group input-append date ">
+                            <input type="text" class="form-control form_datetime" name="To" id="To">
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-9"></div>
+                <div class="col-xs-3">
+                    <div class=" col-md-12 col">
+                        <button type="button" class="bk-margin-left-5 btn btn-primary btn-sm" id="Search"><i class="fa fa-search"></i> Search</button>
+                        <button type="button" class="bk-margin-left-5 btn btn-success btn-sm" href="#modalForm" id="addSuggest"><i class="fa fa-plus"></i> Add</button>
+                        <a href="#EditForm" class="bk-margin-left-5 btn btn-success btn-sm hidden" id="editSuggest"><i class="fa fa-plus"></i> Add</a>
+                    </div>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div>
+            
+            <div class="table-responsive" style="margin:30px 27px;border:0px solid red" id="searchResult"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("SuggestAdd")
+    </div>
+</div>
+
+<div id="EditForm" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Action("SuggestEdit")
+    </div>
+</div>
+
+<script src="@Url.Content("~/Content/Suggest/Suggest.js")"></script>

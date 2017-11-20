@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}@using Common
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="#"><i class="icon fa fa-cogs"></i>Setting</a></li>
+            <li><a href="#">Code</a></li>
+        </ol>
+    </div>
+    <div class="pull-right">
+    </div>
+</div>
+
+<div class="panel-body panel-bodynopadding">
+    <div class="tabs">
+        <ul class="nav nav-tabs" id="tabs">
+            <li>
+                <a id="otherTab" href="#otherCode" data-toggle="tab"><i class="fa fa-archive"></i> Other</a>
+            </li>
+            <li>
+                <a id="defectCodeTab" href="#defectCode" data-toggle="tab"><i class="fa fa-wrench"></i> Defect Code</i></a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="otherCode" class="tab-pane">
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <span class="help-block" style="display:inline;width:25%;">Code From</span>
+                        <input type="text" id="key" name="text-input" class="form-control" placeholder="Code From" style="display:inline;width:75%">
+                    </div>
+                    <div class="col-xs-6" style="text-align:right;padding-right:0px">
+                        <button type="button" class="bk-margin-left-5 btn btn-primary btn-sm" id="Search"><i class="fa fa-search"></i> Search</button>
+                        <button type="button" class="bk-margin-left-5 btn btn-success btn-sm" href="#codemodalForm" id="addCode"><i class="fa fa-plus"></i> Add</button>
+                        <a href="#codedeleteForm" class="bk-margin-left-5 btn btn-success btn-sm hidden" id="deleteCode"><i class="fa fa-plus"></i> Delete</a>
+                    </div>
+                    <div class="col-xs-12" style="height:10px;"></div>
+                </div>
+                <div class="table-responsive form-group" id="searchResult"></div>
+            </div>
+            <div id="defectCode" class="tab-pane">
+                <div class="form-group">
+                    <div class="col-xs-4">
+                        <label class="col-md-5 help-block">Defect Code Type</label>
+                        <div class="col-md-7 col">
+                            <input type="text" id="scodetype" name="text-input" class="form-control" placeholder="Defect Code Type">
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="col-md-4 help-block">Defect Name</label>
+                        <div class="col-md-8 col">
+                            <input type="text" id="scode" name="text-input" class="form-control" placeholder="Defect Code">
+                        </div>
+                    </div>
+                 </div>
+                <div class="form-group">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6" style="text-align:right;padding-right:0px">
+                        <button type="button" class="bk-margin-left-5 btn btn-success btn-sm hidden" href="#defectcodemodalForm" id="editDefectCode"><i class="fa fa-plus"></i> Edit</button>
+                        <button type="button" class="bk-margin-left-5 btn btn-primary btn-sm" id="DefectSearch"><i class="fa fa-search"></i> Search</button>
+                        <button type="button" class="bk-margin-left-5 btn btn-success btn-sm" href="#defectcodemodalForm" id="addDefectCode"><i class="fa fa-plus"></i> Add</button>
+                        <button type="button" class="bk-margin-left-5 btn btn-warning btn-sm" href="#defectimportFrom" id="importDefectCode"><i class="fa fa-paperclip"></i> Import</button>
+                        <button class="bk-margin-left-5 btn btn-danger btn-sm" id="DefectCodeExport"><i class="fa fa-mail-forward"></i>Export</button>
+                    </div>
+                    <div class="col-xs-12" style="height:10px;"></div>
+                </div>
+                <div class="table-responsive form-group" id="defectcodesearchResult"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="codemodalForm" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("CodeAdd")
+    </div>
+</div>
+
+<div id="defectcodemodalForm" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("DefectCodeAdd")
+    </div>
+</div>
+
+<div id="codedeleteForm" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Action("CodeDelete")
+    </div>
+</div>
+
+<div id="defectimportFrom" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Partial("DefectCodeImport")
+    </div>
+</div>
+
+<script src="@Url.Content("~/Content/Code/CodeIndex.js")?v=@CommonHelper.JsVision()"></script>

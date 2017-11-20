@@ -1,0 +1,67 @@
+BTN_PROBLEM_SUBMIT -提交按钮 shift qe
+BTN_PROBLEM_APPROVE -审批按钮  qe
+BTN_PROBLEM_REJECT  -回滚按钮  qe
+
+BTN_PROBLEM_CLOSE1  -action的关闭按钮
+BTN_PROBLEM_CLOSE2  -stand的关闭按钮
+
+solvingteamTab
+BTN_SOLVTEAM_ADD     shift qe
+BTN_SOLVTEAM_APPROVE qe
+BTN_SOLVTEAM_REJECT  qe
+
+qualityalertTab
+BTN_QUALALERT_ADD     shift qe
+BTN_QUALALERT_APPROVE qe
+BTN_QUALALERT_REJECT  qe
+
+sortingactivityTab
+BTN_SORTACT_EDIT      shift qe
+BTN_SORTACT_APPROVE   qe
+BTN_SORTACT_REJECT    qe
+
+problemnextTab
+containmentactionTab
+BTN_CONTAIN_ADD		  shift qe
+BTN_CONTAIN_APPROVE1  qe
+BTN_CONTAIN_APPROVE2  man
+BTN_CONTAIN_REJECT    qe
+
+factoryanalysis
+BTN_FACTANALY_ADD     shift qe
+
+whyanalysisTab
+BTN_WHYANALY_ADD	  shift qe
+BTN_WHYANALY_APPROVE  qe 
+BTN_WHYANALY_REJECT   qe
+
+correctiveActionTab
+BTN_CORRECT_ADD		 shift qe
+BTN_CORRECT_APPROVE  qe
+BTN_CORRECT_REJECT   qe
+
+preventivemeasuresTab
+BTN_PREMEASURE_ADD	shift qe
+BTN_PREMEASURE_APPROVE  qe 
+BTN_PREMEASURE_REJECT   qe
+
+problemnext2Tab
+layeredauditTab
+BTN_LAYERDAUDIT_ADD    qe
+BTN_LAYERDAUDIT_APPROVE    man
+BTN_LAYERDAUDIT_REJECT 	   man
+
+verificationTab
+BTN_VERIFICATION_ADD      qe
+BTN_VERIFICATION_APPROVE  man 
+BTN_VERIFICATION_REJECT   man
+
+standardizationTab
+BTN_STANDA_ADD       qe
+BTN_STANDA_EDIT      qe
+BTN_STANDA_APPROVE   man 
+BTN_STANDA_REJECT    man 
+
+
+BTN_END_APPROVE   
+problemnext3Tab

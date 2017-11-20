@@ -1,0 +1,96 @@
+﻿@using Common
+@{
+    ViewBag.Title = "JurisdictionEdit";
+}
+@model Model.ViewModel.Jurisdiction.JurisdictionEditViewModel
+<script src="@Url.Content("~/Content/assets/vendor/js/jquery-2.1.1.min.js")"></script>
+<script src="@Url.Content("~/Content/assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js")"></script>
+@Html.RenderCss("/Content/assets/vendor/bootstrap/css/bootstrap.min.css", "/Content/assets/css/style.css", 
+    "/Content/assets/css/add-ons.min.css", "/Content/assets/plugins/magnific-popup/css/magnific-popup.css",
+    "/Content/assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css")
+@Html.RenderCss("/Content/assets/plugins/select2/css/select2.min.css", "/Content/assets/plugins/select2/select2.css")
+
+<style>
+    .select2-chosen {
+        margin-right: 26px;
+        display: inline !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: none;
+        width: auto;
+    }
+</style>
+
+
+
+<input type="hidden" id="UserId" />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">JurisdictionEdit</h2>
+    </div>
+    <div class="panel-body bk-noradius">
+        <form id="JurisdictionEdit" class="form-horizontal mb-lg" novalidate="novalidate">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" name="Name" class="form-control" id="txtName" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">JobNumber</label>
+                <div class="col-sm-9">
+                    <input type="text" name="Name" class="form-control" id="txtJobnumber" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Selected RoleGroup</label>
+                <div class="bootstrap-tagsinput form-control col-sm-9" style="width: 70%;margin-left: 14px;">
+                    @*@if (Model.RoleGroupList != null)
+                    {
+                        foreach (var item in Model.RoleGroupList)
+                        {
+                            <span class="tag label label-primary">@item.RoleGroupName<span data-role="remove" data-groupId="@item.RoleGroupId"></span></span>
+                        }
+                    }*@
+                    @*<input type="text" placeholder="" id="tags-inputtags-input" style="width: 3em !important;" size="1">*@
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Not Selected RoleGroup</label>
+                @Html.DropDownList("roleGroup",ViewBag.RoleGroup as IEnumerable<SelectListItem>,new { @id = "roleGroup", @class = "col-sm-9", @style= "margin-left: 14px; width: 70%;" })
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button class="btn btn-primary" id="JurisdictionSave">Confirm</button>
+                <button type="reset" id="JurisdictionReset" class="bk-margin-right-5 btn btn-default">Reset</button>
+                <button class="btn btn-default modal-dismiss">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.RenderJs("/Content/assets/plugins/select2/js/select2.full.min.js", "/Content/assets/plugins/select2/select2.js")
+<script type="text/javascript">
+    $(function () {
+        $("#roleGroup").select2();
+        $("#roleGroup").on("change", function (event) {
+            event.preventDefault();
+            var text = $("#roleGroup").find("option:selected").text();
+            var selectvalue = $("#roleGroup").val();
+            var html = "<span class='tag label label-primary'>" + text + "<span data-role='remove' data-groupId=" + selectvalue + "></span></span>";
+            //$(".tag:last").after(html);
+            $(".bootstrap-tagsinput").append(html);
+            $("#roleGroup").find("option:selected").remove();
+        });
+        $(".bootstrap-tagsinput").on('click', "span[data-role='remove']", function () {
+            var thisvalue = $(this).attr("data-groupId");
+            var thistext = $(this).parent().text();
+            $("#roleGroup").append("<option value='" + thisvalue + "'>" + thistext + "</option>");
+            $(this).parent().remove();
+        });
+        $("#roleGroup").next("span").css("margin-left", "14px");
+    });
+</script>

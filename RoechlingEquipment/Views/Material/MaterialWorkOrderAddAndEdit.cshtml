@@ -1,0 +1,43 @@
+﻿<form id="workOrder-form" class="form-horizontal" novalidate="novalidate" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6><i class="fa fa-check-circle-o bk-fg-warning"></i>Work Order</h6> 
+        </div>
+        @*<input type="hidden" id="id" />*@
+        <div class="panel-body">
+            <label class="col-md-2 control-label">Order No<span class="required">*</span></label>
+            <div class="col-md-4">
+                <input type="text" id="orderNo" name="orderNo" class="form-control" required>
+            </div>
+            <label class="col-md-2 control-label">Sap No</label>
+            <div class="col-md-4">
+                <input type="text" id="sapNo" name="sapNo" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Product</label>
+            <div class="col-md-4">
+                <input type="text" id="product" name="product" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Receipt Time</label>
+            <div class="col-md-4">
+                <input type="text" id="receiptTime" name="receiptTime" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Receipt By</label>
+            <div class="col-md-4">
+                <input type="text" id="receiptBy" name="receiptBy" class="form-control">
+            </div>  
+            <div class="col-md-12 line">
+                <div class="col-md-4">
+                </div>
+                <div class="col-sm-8" style="text-align:right;padding-right:0px">
+                    <button class="bk-margin-left-5 btn btn-info" id="WorkOrderSubmmitBtn">Submit</button>
+                    <button type="reset" id="WorkOrderResetBtn" class="bk-left-right-5 btn btn-default">Reset</button>
+                    <button type="button" class="bk-margin-left-5 btn btn-info" id="WorkOrderCancelBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

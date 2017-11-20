@@ -1,0 +1,74 @@
+﻿@using Model.Material;
+@model MaterialToolSearchResultModel 
+
+<table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" role="grid" aria-describedby="datatable-tabletools_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" >ToolNo</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" >ProductName</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Status</th> 
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" >ToolSupplier</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" >ToolSupplierNo</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" >ProductDate</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 10%;">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.Models.Count() > 0)
+        {
+            foreach (var item in Model.Models)
+            {
+                <tr class="gradeA odd" role="row">
+                    <td>@item.MTToolNo</td> 
+                    <td>@item.MTProductName</td> 
+                    <td>@item.MTStatus</td> 
+                    <td>@item.MTToolSupplier</td>
+                    <td>@item.MTToolSupplierNo</td>
+                    <td>@item.MTProductDate</td>
+                    <td>
+                        <a href="#machineToolForm" class="on-default materialRow" onclick="EditMachineTool(@item.Id)"><i class="fa fa-pencil"></i></a>
+                        <a class="on-default remove-row" onclick="DeleteMaterialTool(@item.Id)"><i class='fa fa-trash-o'></i></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align:center" colspan="7">NoResult</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- pager -->
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialToolList(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialToolList(@(Model.Page.CurrentPage - 1))">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="SearchMaterialToolList(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialToolList(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialToolList(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}

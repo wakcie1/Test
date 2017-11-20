@@ -1,0 +1,556 @@
+﻿<style>
+    .ProblemPreview {
+        height: 34px
+    }
+</style>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Problem Info</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <br />
+        <div class="form-group ProblemPreview">
+            <div>
+                <label class="col-md-1 control-label">ProblemNo</label>
+                <div class="col-md-2" id="problemnoPre">
+                </div>
+            </div>
+            <label class="col-md-1 control-label" for="select">Process</label>
+            <div class="col-md-2" id="problemprocessPre">
+            </div>
+            <label class="col-md-1 control-label" for="select">Machine#</label>
+            <div class="col-md-2" id="machinesPre">
+            </div>
+            <label class="col-md-1 control-label" for="select">Tool#</label>
+            <div class="col-md-2" id="toolsPre">
+            </div>
+        </div>
+        <div class="form-group ProblemPreview">
+            <label class="col-md-1 control-label" for="select">WorkOrder</label>
+            <div class="col-md-2" id="workorderPre">
+            </div>
+            <label class="col-md-1 control-label" for="select">SAP</label>
+            <div class="col-md-2" id="sappnPre">
+            </div>
+            <label class="col-md-1 control-label" for="select">PartName</label>
+            <div class="col-md-2" id="partnamePre">
+            </div>
+            <label class="col-md-1 control-label" for="select">Customer</label>
+            <div class="col-md-2" id="customerPre">
+            </div>
+        </div>
+        <div class="form-group ProblemPreview">
+            <label class="col-md-1 control-label" for="select">Date</label>
+            <div class="col-md-2" id="problemdatePre">
+            </div>
+            <label class="col-md-1 control-label" for="select">Source</label>
+            <div class="col-md-2" id="problemsourcePre">
+            </div>
+            <label class="col-md-1 control-label" for="select">DefectType</label>
+            <div class="col-md-2" id="problemdefecttypePre">
+            </div>
+            <label class="col-md-1 control-label" for="select">DefectCode</label>
+            <div class="col-md-2" id="problemdefectcodePre">
+            </div>
+        </div>
+        <div class="form-group ProblemPreview">
+            <label class="col-md-1 control-label" for="select">DefectQty</label>
+            <div class="col-md-2" id="problemdefectqtyPre">
+            </div>
+            <label class="col-md-1 control-label" for="select">ShiftType</label>
+            <div class="col-md-2" id="problemshifttypePre">
+            </div>
+            <div class="col-md-3">
+                <div class="checkbox-custom checkbox-inline">
+                    <input type="checkbox" id="problemisrepeatPre" name="problemisrepeat" value="1" disabled>
+                    <label for="problemisrepeat"> Repeated</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="problemseverityPre">Severity</label>
+            <div class="col-md-2" id="problemseverityPre">
+            </div>
+            <label class="col-md-1 control-label" for="problestatusPre">Status</label>
+            <div class="col-md-2" id="problestatusPre">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="problemdescription">Problem Description</label>
+            <div class="col-md-11" id="problemdescriptionPre">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="textarea-input">Picture(OK)</label>
+            <div class="col-md-3">
+                <img id="selectImg1Pre" src="" style="width:140px;height:140px" />
+            </div>
+            <div class="col-md-3">
+                <img id="selectImg2Pre" src="" style="width:140px;height:140px" />
+            </div>
+            <div class="col-md-3">
+                <img id="selectImg3Pre" src="" style="width:140px;height:140px" />
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-1 control-label" for="textarea-input">Picture(NG)</label>
+            <div class="col-md-3">
+                <img id="selectImg4Pre" src="" style="width:140px;height:140px" />
+            </div>
+            <div class="col-md-3">
+                <img id="selectImg5Pre" src="" style="width:140px;height:140px" />
+            </div>
+            <div class="col-md-3">
+                <img id="selectImg6Pre" src="" style="width:140px;height:140px" />
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-12 line">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvsolvingteam" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Problem Solving Team</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-qualityalert" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-solvingteam" rowspan="1" colspan="1" style="width: 20%;">Team Member</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-solvingteam" rowspan="1" colspan="1" style="width: 15%;">Desk EXT</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-solvingteam" rowspan="1" colspan="1" style="width: 20%;">Department</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-solvingteam" rowspan="1" colspan="1" style="width: 15%;">Title</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-solvingteam" rowspan="1" colspan="1" style="width: 15%;">IsLearder</th>
+                            </tr>
+                        </thead>
+                        <tbody id="solvingteambodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvqualityalert" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Quality Alert</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-qualityalert" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-qualityalert" rowspan="1" colspan="1" style="width: 20%;">What</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-qualityalert" rowspan="1" colspan="1" style="width: 15%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-qualityalert" rowspan="1" colspan="1" style="width: 20%;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-qualityalert" rowspan="1" colspan="1" style="width: 15%;">Actual date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-qualityalert" rowspan="1" colspan="1" style="width: 15%;">Attachment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="qualityalertbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvsortingactivity" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Sorting Activity</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-qualityalert" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_disabled" tabindex="0" aria-controls="datatable-editable-sortingactivity" rowspan="1" colspan="1" style="width: 50%;">Value Stream</th>
+                                <th class="sorting_disabled" tabindex="0" aria-controls="datatable-editable-sortingactivity" rowspan="1" colspan="1" style="width: 15%;">Defect Qty</th>
+                                <th class="sorting_disabled" tabindex="0" aria-controls="datatable-editable-sortingactivity" rowspan="1" colspan="1" style="width: 15%;">Sorted Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sortingactivitybodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvcontainmentaction" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Containment Action (24H)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-containmentaction" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 20%;">What</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 5%;">Trouble Spots</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 5%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 140px;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 140px;">Varification date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 10%;">Where</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 5%;">Attachment</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 5%;">Effeective</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-containmentaction" rowspan="1" colspan="1" style="width: 15%;">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="containmentactionbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvfactoranalysis" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Factor Analysis</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-down"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body" style="display:none">
+        <div class="col-md-12" style="padding-bottom:10px;height:400px;overflow:hidden;">
+            <canvas id="pvcanvas" class="factoranalysiscanvas"></canvas>
+            <br />
+            <button id="pvaddA1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A1</button>
+            <button id="pvaddA2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A2</button>
+            <button id="pvaddA3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A3</button>
+            <button id="pvaddA4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> A4</button>
+            <br />
+            <button id="pvaddB1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B1</button>
+            <button id="pvaddB2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B2</button>
+            <button id="pvaddB3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B3</button>
+            <button id="pvaddB4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> B4</button>
+            <br />
+            <button id="pvaddC1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C1</button>
+            <button id="pvaddC2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C2</button>
+            <button id="pvaddC3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C3</button>
+            <button id="pvaddC4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> C4</button>
+            <br />
+            <button id="pvaddD1" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D1</button>
+            <button id="pvaddD2" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D2</button>
+            <button id="pvaddD3" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D3</button>
+            <button id="pvaddD4" disabled="disabled" class="btn-xs btn-info factoranalysisbutton"><i class="fa fa-plus"></i> D4</button>
+        </div>
+        <div class="col-md-12" style="padding-bottom:10px;">
+            <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-factoranalysis" role="grid" aria-describedby="datatable-editable_info">
+                <thead>
+                    <tr role="row">
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;"></th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">Possible cause</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 15%;">What</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">Who</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">When</th>
+                        <th class="sorting" tabindex="0" aria-controls="datatable-editable-factoranalysis" rowspan="1" colspan="1" style="width: 20%;">Result</th>
+                    </tr>
+                </thead>
+                <tbody id="pvfactoranalysisbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div id="pvwhyanalysis" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>5 Why Analysis (7D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-whyanalysis1" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 20%;">2X5 why Form</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 20%;">5Why question chain</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 15%;">1st Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 20%;">2nd Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 20%;">3rd Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 20%;">4th Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis1" rowspan="1" colspan="1" style="width: 20%;">5th Why?</th>
+                        <tbody id="whyanalysisbody1Pre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-whyanalysis2" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 20%;">2X5 why Form</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 20%;">5Why question chain</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 15%;">1st Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 20%;">2nd Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 20%;">3rd Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 20%;">4th Why?</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-whyanalysis2" rowspan="1" colspan="1" style="width: 20%;">5th Why?</th>
+                            </tr>
+                        </thead>
+                        <tbody id="whyanalysisbody2Pre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <form id="problempre-rootcause" class="form-horizontal" novalidate="novalidate">
+                <label class="col-md-1 control-label" for="problemrootcausePre">Root Cause</label>
+                <div class="col-md-11" id="problemrootcausePre">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="pvcorrectiveaction" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Corrective Action (7D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-correctivecction" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">What</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 15%;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">Actual Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">Where</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">Attachment</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">Status</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-correctivecction" rowspan="1" colspan="1" style="width: 20%;">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="correctivecctionbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvpreventivemeasures" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Preventive Measures (14D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-preventivemeasures" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">What</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 15%;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">Actual Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">Where</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">Attachment</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">Status</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-preventivemeasures" rowspan="1" colspan="1" style="width: 20%;">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="preventivemeasuresbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvactionplan" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Action Plan</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label class="col-md-1 control-label" for="problemactionplanPre">Action Plan</label>
+            <div class="col-md-11" id="problemactionplanPre" name="problemactionplan">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvlayeredaudit" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Layered Audit (14D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-layeredaudit" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">What</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 15%;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">Actual Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">Where</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">Attachment</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">Status</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-layeredaudit" rowspan="1" colspan="1" style="width: 20%;">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="layeredauditbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="pvverification" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Verification (34D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-verification" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">What</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 15%;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">Actual Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">Where</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">Attachment</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">Status</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-verification" rowspan="1" colspan="1" style="width: 20%;">Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="verificationbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pvstandardization" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Standardization (35D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="dataTables_wrapper no-footer">
+                <div class="row datatables-header form-inline">
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable-standardization" role="grid" aria-describedby="datatable-editable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Item Name</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Need Update?Y/N</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 15%;">Who</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Plan Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Actual Date</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Doc No</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Changing Content</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Old Version</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">New Version</th>
+                                <th class="sorting" tabindex="0" aria-controls="datatable-editable-standardization" rowspan="1" colspan="1" style="width: 20%;">Attachment</th>
+                            </tr>
+                        </thead>
+                        <tbody id="standardizationbodyPre"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-12" style="padding-bottom:10px;">
+    @*<button type="button" class="bk-margin-right-5 btn btn-warning hidden" id="rejectEnd">Reject</button>*@
+</div>
+<div id="previewTab" class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-12" style="text-align:right;padding-right:0px">
+            <button type="button" class="bk-margin-right-5 btn btn-success hidden" id="approveEnd">Approve</button>
+            <button class="bk-margin-left-5 btn btn-danger" id="previewexport" data-url="@Url.Action("PreviewExport","Problem")">Generate Report</button>
+        </div>
+    </div>
+</div>

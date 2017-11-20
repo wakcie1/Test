@@ -1,0 +1,36 @@
+﻿@using Common;
+@{
+    ViewBag.Title = "DeparmentManagerList";
+}
+
+@model  Model.Home.OrganizationEntity
+@if (Model != null && Model.DepartmentChildList.Count > 0)
+{
+    foreach (var item in Model.DepartmentChildList)
+    {
+        <li class="parent_li" name="li_@item.ParentId">
+            @if (item.DepartmentIsValid > 0)
+            {
+                <span title="展开子部门" id="span_@item.DepartmentId" data-id="@item.DepartmentId" style="padding:0px 8px;"><font>@item.DepartmentName</font></span>
+                <a class="btn bk-margin-right-5 btn-secondary-current  btn-primary" href="#departmentModal" id="btnsib_@item.DepartmentId" style="display:none">New flat</a>
+                <a class="btn bk-margin-right-5 btn-secondary-next  btn-success" href="#departmentModal" id="btnAdd_@item.DepartmentId" data-id="@item.ParentId" style="display:none">New subordinate</a>
+                <a class="btn bk-margin-right-5 btn-secondary-edit btn-info" href="#departmentModal" id="btn_@item.DepartmentId" data-id="@item.DepartmentId" style="display:none">Edit</a>
+                <a class="btn bk-margin-right-5 btn-secondary-setunvalid btn-warning " id="btnUpdateValid_@item.DepartmentId" style="display:none">Disable</a>
+            }
+            else
+            {
+                <span class="inValid" title="无效部门" id="span_@item.DepartmentId" data-id="@item.DepartmentId" style="padding:0px 8px;"><font>@item.DepartmentName</font></span>
+                if (item.DepartmentId != EncryptHelper.DesEncrypt("-1"))
+                {
+                    <a  class="btn btnnew btn-secondary-setvalid btn-primary "  id="btnUpdateValid_@item.DepartmentId" style="display:none" >Enable</a>
+                }
+            }
+            <ul style="float:none">
+                @if (item.DepartmentChildList != null && item.DepartmentChildList.Count >0)
+                {
+                    Html.RenderPartial("DepartmentManagerList", item);
+                }
+            </ul>
+        </li>
+    }
+}

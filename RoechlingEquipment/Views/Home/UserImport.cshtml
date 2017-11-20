@@ -1,0 +1,39 @@
+﻿<div class="panel-heading">
+    <h2 class="panel-title">ImportUser</h2>
+</div>
+    @*<div class="panel-body bk-noradius">
+        @using (Html.BeginForm("UpLoadFile", "Home", FormMethod.Post,
+            new { enctype = "multipart/form-data",id="UserUpload",@class="form-horizontal mb-lg" }))
+        {
+            @Html.AntiForgeryToken()
+                <div class="editor-field">
+                    <div class="col-md-5">
+                        @Html.TextBox("file", "", new { type = "file" })
+                    </div>
+                    <div class="col-md-7" style="text-align:center">
+                        <a id="btnTempDown" style="color:#428bca" data-url="@Url.Action("StreamFileFromDisk","Home")">Temp download</a>
+                        <button id="upload" class="bk-margin-right-5 btn btn-primary">Upload</button>
+                        <button class="btn btn-default modal-dismiss">Cancel</button>
+                    </div>
+                </div>
+                
+        }
+    </div>*@
+<div class="panel-body bk-noradius">
+    <div class="editor-field">
+        <div class="col-md-5">
+            @Html.TextBox("file", "", new { type = "file", Id = "defectfile" })
+        </div>
+        <div class="col-md-7" style="text-align:center">
+            <a id="btnTempDown" style="color:#428bca" data-url="@Url.Action("StreamFileFromDisk", "Home")">Temp download</a>
+            <button id="upload" class="bk-margin-right-5 btn btn-primary">Upload</button>
+            <button class="btn btn-default" id="cancel">Cancel</button>
+        </div>
+        <div class="col-md-12">
+            <div id="importProcess" class="progress progress2 progress-xs  progress-striped active hidden">
+                <div id="defectcodeimportProcessbar" class="progress-bar progress-bar-primary" role="progressbar" data-timeId="0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

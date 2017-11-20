@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpLoadFile</title>
+    <style>
+        label {
+            float: right
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("UploadMaterialFiles", "Material", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Upload a file</legend>
+            <div class="editor-field">
+                <div class="col-md-5" >
+                    @Html.Label("Chose Your File:")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBox("file", "", new { type = "file" })
+                </div>
+            </div>
+            <br/>
+            <div class="editor-field" style="text-align:center">
+                <input type="submit" value="Upload" />
+            </div>
+        </fieldset>
+    }
+
+    @*@model List<string>
+
+    <h2>Downloads</h2>
+    <table>
+        <tr>
+            <th>File Name</th>
+            <th>Link</th>
+        </tr>
+        @for (var i = 0; i <= Model.Count - 1; i++)
+        {
+            <tr>
+                <td>
+                    @Model[i].ToString()
+                </td>
+                <td>
+                    @Html.ActionLink("Download", "Download", new { ImageName = @Model[i].ToString() })
+                </td>
+            </tr>
+        }
+    </table>*@
+    
+   
+</body>
+</html>

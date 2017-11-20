@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "JurisdictionSearch";
+}
+
+@model Model.ViewModel.Jurisdiction.JurisdictionSearchModel
+
+<table class="table table-bordered table-striped dataTable no-footer" role="grid" id="JurisdictionDt">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Name</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Jobnumber</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Position</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1">RoleGroup</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 110px;">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Models != null)
+        {
+            foreach (var item in Model.Models)
+            {
+                <tr class="gradeA odd" role="row">
+                    <td>@item.Username</td>
+                    <td>@item.Jobnumber</td>
+                    <td>@item.Position</td>
+                    <td>@item.RoleGroup</td>
+                    <td>
+                        <a class="btn btn-info btnEditUser" data-Id="@item.UserId" id="btnEdit_@item.UserId" onclick="EditJurisdiction('@item.UserId')"><i class="fa fa-edit "></i></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align:center">NoResult</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination" style="float:right">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" class="first" onclick="SearchResult(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="prev" onclick="SearchResult(@(Model.Page.CurrentPage-1))">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="SearchResult(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" class="next" onclick="SearchResult(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="last" onclick="SearchResult(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}
+

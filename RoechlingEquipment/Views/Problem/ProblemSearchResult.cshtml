@@ -1,0 +1,101 @@
+﻿@using Model.Problem;
+@using Common
+@using Common.Enum
+@model ProblemSearchResultModel
+@{
+    ViewBag.Title = "ProblemSearchResult";
+}
+
+<div style="width:100%;  overflow-x:scroll">
+    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+        <thead>
+            <tr style="display:-ms-inline-flexbox"> 
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Edit</th> 
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">ProblemNo</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">IssueFoundOwner</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" >Date</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Shift</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Repeated</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Status</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Process</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">WorkOrder</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Tooling</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Machine</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Severity</th> 
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Sap#</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" nowrap="nowrap">Part Name</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Customer</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" nowrap="nowrap">Next Report Date</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1">Source</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" nowrap="nowrap">SourceDefect Type</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" nowrap="nowrap">Root Cause</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Models.Count() > 0)
+        {
+            foreach (var item in Model.Models)
+            {
+                    <tr>
+                        <td> <a href="@(Url.Action("ProblemIndex","Problem") + "?ProId=" + item.Id)" class="on-default edit-row"><i class="fa fa-pencil"></i></a></td>
+
+                        <td nowrap="nowrap">@item.PIProblemNo</td>
+                        <td nowrap="nowrap">@item.PICreateUserName</td>
+                        <td nowrap="nowrap">@item.PIProblemDateDesc</td>
+                        <td nowrap="nowrap">@item.PIShiftType</td>
+                        <td nowrap="nowrap">@(EnumHelper.GetDescriptionByValue<YesOrNoEnum>((int)item.PIIsRepeated))</td>
+                        <td nowrap="nowrap">@(EnumHelper.GetDescriptionByValue<ProblemStatusEnum>((int)item.PIStatus))</td>
+                        <td nowrap="nowrap">@item.PIProcess</td>
+                        <td nowrap="nowrap">@item.PIWorkOrder</td>
+                        <td nowrap="nowrap">@item.PITool</td>
+                        <td nowrap="nowrap">@item.PIMachine</td>
+                        <td nowrap="nowrap">@(EnumHelper.GetDescriptionByValue<ProblemSeverityEnum>((int)item.PISeverity))</td> 
+                        <td nowrap="nowrap">@item.PISapPN</td>
+                        <td nowrap="nowrap">@item.PIProductName</td>
+                        <td nowrap="nowrap">@item.PICustomer</td>
+                        <td nowrap="nowrap">@item.PINextProblemDateDesc</td>
+                        <td nowrap="nowrap">@item.PIProblemSource</td>
+                        <td nowrap="nowrap">@item.PIDefectType</td>
+                        <td nowrap="nowrap">@item.PIRootCause</td> 
+                </tr>
+            }
+        }
+        else
+        {
+                <tr>
+                    <td style="text-align:center" colspan="19">NoResult</td>
+                </tr>
+        }
+        </tbody>
+    </table>
+</div>
+<!-- pager -->
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="Search(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="Search(@(Model.Page.CurrentPage - 1))">Previous</a>
+            </li>
+        }
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="Search(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="Search(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="Search(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}

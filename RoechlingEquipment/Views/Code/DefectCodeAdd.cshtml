@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "DefectCodeAdd";
+}
+@using Common
+<form id="defectcode-form" class="form-horizontal" novalidate="novalidate">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6><i class="fa  fa-check-circle-o bk-fg-warning"></i>Defect Code Add</h6>
+            <input type="hidden" id="DCID" value="0" />
+        </div>
+        <input type="hidden" id="id" />
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="category" class="col-md-3 control-label">Code Type<span class="required">*</span></label>
+                <div class="col-md-5">
+                    <input type="text" id="bdcodetype" name="bdcodetype" class="form-control" placeholder=" " required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="codeOrder">No.<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <input type="number" id="bdcodeno" name="bdcodno" class="form-control" min="0" placeholder=" " required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="Code">Code<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <input type="text" id="bdcode" name="bdcode" class="form-control" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="Code">Code Name(En)<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <input type="text" id="bccodenameen" name="bccodenameen" class="form-control" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="Code">Code Name(Cn)<span class="required">*</span> </label>
+                <div class="col-sm-5">
+                    <input type="text" id="bccodenamecn" name="bccodenamecn" class="form-control" placeholder="" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <button class="btn btn-primary" id="addDefectCodeBtn">Submmit</button>
+                    <button type="reset" id="ResetDefectCodeBtn" class="bk-margin-right-5 btn btn-default">Reset</button>
+                    <button class="btn btn-default modal-dismiss" id="cancelDefectCodeBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<input type="hidden" id="categoryUrl" value="@Url.Action("GetCategoryList","Code" ,new { isNeedDefalut = false })" />
+<script src="@Url.Content("~/Content/Code/DefectCodeAdd.js")?v=@CommonHelper.JsVision()"></script>

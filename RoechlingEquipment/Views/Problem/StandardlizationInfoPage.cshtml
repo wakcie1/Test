@@ -1,0 +1,46 @@
+﻿<div id="layeredauditTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Layered Audit (14D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("StandLayeredAudit")
+    </div>
+</div>
+
+<div id="verificationTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Verification (34D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("StandVerification")
+    </div>
+</div>
+
+<div id="standardizationTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Standardization (35D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("Standardization")
+    </div>
+</div>
+<div id="problemnext3Tab" class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-12" style="text-align:right;padding-right:0px">
+            <button type="button" class="bk-left-right-5 btn btn-danger hidden" id="closeProblem3">Close Problem</button>
+            <button class="bk-margin-left-5 btn btn-warning hidden" id="problemNext3">Next<i class="fa fa-mail-forward"></i></button>
+        </div>
+    </div>
+</div>

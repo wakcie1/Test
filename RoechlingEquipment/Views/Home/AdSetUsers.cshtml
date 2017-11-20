@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = "AdSetUsers";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+<style>
+    .select2-chosen {
+        margin-right: 26px;
+        display: inline !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: none;
+        width: auto;
+    }
+
+
+    .col {
+        padding-right: 0px;
+    }
+</style>
+@using Common
+
+@Html.RenderCss("/Content/assets/plugins/select2/css/select2.min.css", "/Content/assets/plugins/select2/select2.css")
+<!-- Page Header -->
+@if (ViewBag.ImportMsg != null)
+{
+    <div class="ui-pnotify stack-bar-top" style="width: 100%; opacity: 1; display: block; left: 0px; top: 0px; cursor: auto;">
+        <div class="notification ui-pnotify-container notification-warning" style="min-height: 16px;">
+            <div class="ui-pnotify-closer" style="cursor: pointer; visibility:visible;">
+                <i class="fa fa-times" title="Close"></i>
+            </div>
+            <div class="ui-pnotify-sticker" style="cursor: pointer; visibility: hidden;">
+                <span class="fa fa-pause" title="Stick"></span>
+            </div><div class="ui-pnotify-icon">
+                <span class="fa fa-exclamation"></span>
+            </div>
+            <h4 class="ui-pnotify-title">Notification</h4>
+            <div class="ui-pnotify-text">@ViewBag.ImportMsg</div>
+            <div style="margin-top: 5px; clear: both; text-align: right; display: none;"></div>
+        </div>
+    </div>
+}
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="#"><i class="icon fa fa-cogs"></i>Setting</a></li>
+            <li><a href="#">User</a></li>
+        </ol>
+    </div>
+</div>
+<!-- End Page Header //TODO:CPF -->
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-default bk-bg-white">
+        <div class="panel-heading bk-bg-white">
+            <h6><i class="fa fa-indent red"></i>User Infomation</h6>
+            <div class="panel-actions">
+                <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+                      @*<a href="#" class="btn-closeiniframe"><i class="fa fa-times"></i></a>*@
+            </div>
+        </div>
+        <input type="hidden" id="id" />
+        <div class="panel-body">
+            <div class="form-group"></div>
+            <div class="form-group"> 
+                <div class="col-xs-3" >
+                    <label class="col-md-4 help-block">Name</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="name" name="text-input" class="form-control" placeholder="Name">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block">Department</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="department" name="text-input" class="form-control" placeholder="Department">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <label class="col-md-4 help-block">Position</label>
+                    <div class="col-md-8 col">
+                        <input type="text" id="position" name="text-input" class="form-control" placeholder="Position">
+                    </div>
+                </div>
+                <div class="col-xs-3" style="padding-right:0px">
+                    <label class="col-md-3 help-block">Account</label>
+                    <div class="col-md-9 col">
+                        <input type="text" id="account" name="text-input" class="form-control" placeholder="Account">
+                    </div>
+                </div>
+                <div class="col-xs-12" style="height: 10px;"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-6">
+                </div>
+                <div class="col-xs-6" style="text-align:right;padding-right:0px">
+                    <button type="button" class="bk-margin-left-5 btn btn-primary btn-sm" id="search"><i class="fa fa-search"></i> Search</button>
+                    <a href="#modalForm" class="bk-margin-left-5 btn btn-success btn-sm" id="addToTable"><i class="fa fa-plus"></i> Add</a>
+                    <a href="#UserImport" class="bk-margin-left-5 btn btn-warning btn-sm" id="importUser"><i class="fa fa-paperclip"></i> Import</a>
+                    <a class="bk-margin-left-5 btn btn-danger btn-sm" id="btnExport"><i class="fa fa-mail-forward"></i>Export</a>
+                    <a href="#modalForm" class="bk-margin-left-5 btn btn-success btn-sm hidden" id="editUser"><i class="fa fa-plus"></i> Add</a>
+                    <a class="bk-margin-left-5 btn btn-success btn-sm hidden" id="btnResetPass" href="#modalCenterIcon"><i class="fa fa-user "></i></a>
+                </div>
+                <div class="col-xs-12" style="height:10px;"></div>
+            </div>
+            <div id="dateResult"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modalForm" class="modal-block modal-block-primary bigsize mfp-hide">
+    <div class="panel panel-default">
+        @Html.Action("AdUser")
+    </div>
+</div>
+
+<div id="UserImport" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Action("UserImport")
+    </div>
+</div>
+
+<div id="modalCenterIcon" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        <div class="panel-body text-center bk-radius-top bk-noradius-bottom">
+            <div class="modal-wrapper">
+                <div class="modal-icon center">
+                    <i class="fa fa-question-circle"></i>
+                </div>
+                <div class="modal-text">
+                    <h4>Are you sure?</h4>
+                    <p>Are you sure that you want to reset password as @ViewBag.DefaultPass ?</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-info" id="ResetPassCon">Confirm</button>
+                    <button class="btn btn-default modal-dismiss">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.RenderJs("/Content/assets/plugins/magnific-popup/js/magnific-popup.js", "/Content/assets/js/pages/ui-modals.js", "/Content/assets/plugins/jquery-validation/js/jquery.validate.js")
+@Html.RenderJs("/Content/assets/plugins/select2/js/select2.full.min.js", "/Content/assets/plugins/select2/select2.js")
+<script src="~/Content/Home/AdSetUser.js?v=@CommonHelper.JsVision()"></script>
+<script language="javascript">
+    PageInit();
+    (function ($) {
+        $.extend($.validator.messages, {
+            required: "please input the value",
+            email: "address is unvalid.",
+            ismobile: "Please enter a valid tel."
+        });
+        $.validator.addMethod("ismobile", function (value, element) {
+            var length = value.length;
+            var mobile = /^[0-9]{11}$/;
+            return (length == 11 && mobile.exec(value)) ? true : false;
+        }, "Please enter a valid tel.");
+        var $summaryForm = $("#userAdd");
+        $summaryForm.validate({
+            errorPlacement: function (error, element) {
+                $(element).parent().after(error);
+            },
+            wrapper: "div",
+            showErrors: function (errorMap, errorList) {
+                // 遍历错误列表
+                for (var obj in errorMap) {
+                    // 自定义错误提示效果
+                    $('#' + obj).parent().addClass('has-error');
+                }
+                // 此处注意，一定要调用默认方法，这样保证提示消息的默认效果
+                this.defaultShowErrors();
+            },
+            success: function (label) {
+                $(label).parent().prev().removeClass('has-error');
+            }
+        });
+
+
+    }).apply(this, [jQuery]);
+</script>
+

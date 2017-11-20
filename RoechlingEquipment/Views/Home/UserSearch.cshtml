@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "UserSearch";
+}
+@model Model.ViewModel.User.UserSearchRsultModel
+
+<table class="table table-bordered table-striped dataTable no-footer" role="grid" id="userDt">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >DepartName</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Position</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >EnglishName</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >ChineseName</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Account</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >PhoneNum</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >ExtensionPhone</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >MobilePhone</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="text-align:center">Email</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width:60px" >Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Models.Count() > 0)
+        {
+            foreach (var item in Model.Models)
+            {
+                <tr class="gradeA odd" role="row">
+                    <td>@item.BUDepartName</td>
+                    <td>@item.BUPosition</td>
+                    <td>@item.BUEnglishName</td>
+                    <td>@item.BUName</td>
+                    <td>@item.Account</td>
+                    <td>@item.BUPhoneNum</td>
+                    <td>@item.BUExtensionPhone</td>
+                    <td>@item.BUMobilePhone</td>
+                    <td>@item.BUEmail</td>
+                    <td>
+                        <a class="on-default btnEditUser" data-Id="@item.UserId" id="btnEditUser_@item.UserId" href="#modalForm" onclick="EditUser('@item.UserId')"><i class="fa fa-pencil"></i></a>
+                        @if (item.Account != null)
+                        {
+                            <a class="on-default btnResetPass" data-Id="@item.UserId" id="btnResetPass_@item.UserId" href="#" onclick="ResetUserPass('@item.UserId')" ><i class="fa fa-key"></i></a>
+                        } 
+                        <a class="on-default remove-row" onclick="DeleteUser('@item.UserId')"><i class='fa fa-trash-o'></i></a></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align:center" colspan="10">NoResult</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" class="first" onclick="SearchResult(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="prev" onclick="SearchResult(@(Model.Page.CurrentPage-1))">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="SearchResult(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" class="next" onclick="SearchResult(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="last" onclick="SearchResult(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}
+

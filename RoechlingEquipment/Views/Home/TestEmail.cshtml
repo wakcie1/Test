@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestEmail</title>
+</head>
+<body>
+    <div>
+        Sendto:<input type="text" id="sendto" />
+        <input id="sendmail" type="button" value="TEST" />
+    </div>
+    <div id="sendresult"></div>
+    <script>
+
+
+        $("#sendmail").on("click", function () {
+            var params = {
+                MailAddress: $("#sendto").val() || ''
+            };
+            $.ajax({
+                type: "Post",
+                url: "SendTestMail",
+                async: true,
+                data: JSON.stringify(params),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        if (data.IsSuccessful == true) {
+                            alert("successful");
+                        }
+                        else {
+                            var message = data.ExceptionMessage;
+                            $("#sendresult").append(message);
+                        }
+                    }
+                    else {
+                        alert("error");
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

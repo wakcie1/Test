@@ -1,0 +1,100 @@
+﻿<form id="material-form" class="form-horizontal" novalidate="novalidate" method="post">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6><i class="fa fa-check-circle-o bk-fg-warning"></i>Material Operate</h6>
+            <div class="panel-actions">
+                <input type="hidden" id="MIId" value="0" />
+            </div>
+        </div>
+        <input type="hidden" id="id" />
+        <div class="panel-body">
+            <label class="col-md-2 control-label">Process Type</label>
+            <div class="col-md-4">
+                <input type="text" id="processType" name="processType" class="form-control" >
+            </div>
+            <label class="col-md-2 control-label">Customer</label>
+            <div class="col-md-4">
+                <input type="text" id="customer" name="customer" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">RA SAP P/N<span class="required">*</span></label>
+            <div class="col-md-4">
+                <input type="text" id="sappn" name="sappn" class="form-control" required>
+            </div>
+            <label class="col-md-2 control-label">Part Name</label>
+            <div class="col-md-4">
+                <input type="text" id="productname" name="productname" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Production Unit</label>
+            <div class="col-md-4">
+                <input type="text" id="injectionmc" name="injectionmc" class="form-control">
+            </div> 
+            <label class="col-md-2 control-label">Customer P/N</label>
+            <div class="col-md-4">
+                <input type="text" id="customerpn" name="customerpn" class="form-control">
+            </div> 
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Cavity</label>
+            <div class="col-md-4">
+                <input type="number" min="0" id="cavity" name="cavity" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Cycletime</label>
+            <div class="col-md-4">
+                <input type="number" step="0.01" min="0.00" id="cycletime" name="cycletime" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-sm-2 control-label">Cycletime/Cav</label>
+            <div class="col-md-4">
+                <input type="number" step="0.01" min="0.00" id="cycletimecav" name="cycletimecav" class="form-control">
+            </div>
+            <label class="col-sm-2 control-label">Standard Headcount</label>
+            <div class="col-md-4">
+                <input type="number" min="0" id="standardheadcount" name="standardheadcount" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">Standard Scrap</label>
+            <div class="col-md-4">
+                <input type="text" id="standardScrap" name="standardScrap" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Materials P/N</label>
+            <div class="col-md-4">
+                <input type="text" id="materialpn" name="materialpn" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-md-2 control-label">g/cav(SAP)</label>
+            <div class="col-md-4">
+                <input type="number" step="0.01" min="0.00" id="cavityg" name="cavityg" class="form-control">
+            </div>
+            <label class="col-md-2 control-label">Mold No.</label>
+            <div class="col-md-4">
+                <input type="text" id="moldno" name="moldno" class="form-control">
+            </div>  
+            <div class="col-md-12 line">
+            </div>
+            <label class="col-sm-2 control-label">ASS AC</label>
+            <div class="col-md-4">
+                <input type="text" id="assAC" name="assAC" class="form-control">
+            </div>
+            <label class="col-sm-2 control-label">Work Order</label>
+            <div class="col-md-4">
+                <input type="text" id="workorder" name="workorder" class="form-control">
+            </div>
+            <div class="col-md-12 line">
+                <div class="col-md-4">
+                </div>
+                <div class="col-sm-8" style="text-align:right;padding-right:0px">
+                    <button class="bk-margin-left-5 btn btn-info" id="OperateMaterial">Submit</button>
+                    <button type="reset" id="ResetMaterial" class="bk-left-right-5 btn btn-default">Reset</button>
+                    <button type="button" class="bk-margin-left-5 btn btn-info" id="CancelMaterial">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

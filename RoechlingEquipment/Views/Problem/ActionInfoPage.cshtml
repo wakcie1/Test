@@ -1,0 +1,103 @@
+﻿<div id="problemactionTab" class="panel panel-default hidden">
+        <div class="panel-heading">
+            <h6><i class="fa fa-file-text bk-fg-warning"></i>Action</h6>
+            <div class="panel-actions">
+                <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+                @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+            </div>
+        </div>
+        <div class="panel-body">
+            @Html.Partial("ProblemDetail")
+        </div>
+    </div>
+<div id="containmentactionTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Containment Action (24H)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ActionContainment")
+    </div>
+</div>
+<div id="factoranalysisTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Factor Analysis</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-down"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body" style="display:none">
+        @Html.Partial("ActionFactorAnalysis")
+    </div>
+</div>
+<div id="whyanalysisTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>5 Why Analysis (7D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ActionWhyAnalysis")
+    </div>
+</div>
+<div id="correctiveActionTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Corrective Action (7D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ActionCorrective")
+    </div>
+</div>
+<div id="preventivemeasuresTab" class="panel panel-default hidden">
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Preventive Measures (14D)</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        @Html.Partial("ActionPreventiveMeasures")
+    </div>
+    <div class="panel-heading">
+        <h6><i class="fa fa-file-text bk-fg-warning"></i>Action Plan</h6>
+        <div class="panel-actions">
+            <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+            @*<a href="#" class="btn-close"><i class="fa fa-times"></i></a>*@
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12" style="padding-bottom:10px;">
+            <form id="problem-actionplan" class="form-horizontal" novalidate="novalidate">
+                <label class="col-md-1 control-label" for="problemactionplan">Action Plan</label>
+                <div class="col-md-11">
+                    <textarea id="problemactionplan" name="problemactionplan" rows="9" class="form-control" placeholder="Content.." required></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-12" style="padding-bottom:10px;">
+            <button class="bk-margin-right-5 btn btn-info hidden" id="submitActionPlan">Submit</button>
+            <button class="bk-margin-right-5 btn btn-dark hidden" id="editActionPlan">Edit</button>
+        </div>
+    </div>
+</div>
+<div id="problemnext2Tab" class="panel panel-default">
+    <div class="panel-body">
+        <div class="col-xs-12" style="text-align:right;padding-right:0px">
+            <button type="button" class="bk-margin-right-5 btn btn-success hidden" id="approvePreventivemeasures2">Approve</button>
+            <button type="button" class="bk-margin-right-5 btn btn-warning hidden" id="rejectPreventivemeasures2">Reject</button>
+            <button type="button" class="bk-left-right-5 btn btn-danger hidden" id="closeProblem2">Close Problem</button>
+            <button class="bk-margin-left-5 btn btn-warning hidden" id="problemNext2">Next<i class="fa fa-mail-forward"></i></button>
+        </div>
+    </div>
+</div>

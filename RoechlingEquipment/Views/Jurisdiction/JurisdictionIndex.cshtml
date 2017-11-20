@@ -1,0 +1,69 @@
+﻿@using Common
+@{
+    ViewBag.Title = "JurisdictionIndex";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="index.html"><i class="icon fa fa-home"></i>Advanced Settings</a></li>
+            <li class="active"><i class="fa fa-laptop"></i>Jurisdiction</li>
+        </ol>
+    </div>
+    <div class="pull-right">
+        <h2>Jurisdiction</h2>
+    </div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-default bk-bg-white">
+        <div class="panel-heading bk-bg-white">
+            <h6><i class="fa fa-indent red"></i>jurisdiction Infomation</h6>
+            <div class="panel-actions">
+                <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
+                      @*<a href="#" class="btn-closeiniframe"><i class="fa fa-times"></i></a>*@
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-xs-4">
+                        <span class="help-block">BUName</span>
+                        <input type="text" id="txtName" name="text-input" class="form-control" placeholder="BUName">
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="help-block">JobNumber</span>
+                        <input type="text" id="txtjobNumber" name="text-input" class="form-control" placeholder="jobNumber">
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="help-block">Position</span>
+                        <input type="text" id="txtPosition" name="text-input" class="form-control" placeholder="Position">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-10">
+                    </div>
+                    <div class="col-xs-2">
+                        <button type="button" class="bk-margin-right-5 btn btn-primary btn-sm" id="btnsearch"><i class="fa fa-search"></i> Search</button>
+                        <a href="#modalForm" class="bk-margin-right-5 btn btn-success btn-sm hidden" id="editJurisdiction"><i class="fa fa-plus"></i> Add</a>
+                    </div>
+                </div>
+                <div id="dataResult" class="table-responsive"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+    <div class="panel panel-default">
+        @Html.Action("JurisdictionEdit")
+    </div>
+</div>
+
+@Html.RenderJs("/Content/assets/plugins/magnific-popup/js/magnific-popup.js", "/Content/assets/js/pages/ui-modals.js", "/Content/assets/plugins/jquery-validation/js/jquery.validate.js")
+@Html.RenderJs("/Content/assets/plugins/select2/js/select2.full.min.js", "/Content/assets/plugins/select2/select2.js")
+ 
+<script src="@Url.Content("~/Content/Jurisdiction/Jurisdiction.js")?v=@CommonHelper.JsVision()"></script> 
+
+<script language="javascript">
+    PageInit();
+</script>
+

@@ -1,0 +1,97 @@
+﻿@using Model.Material;
+@model MaterialOtherSearchResultModel
+@{
+    ViewBag.Title = "MaterialOtherSearch";
+}
+
+<table class="table table-bordered table-striped dataTable no-footer" id="datatable-tabletools" role="grid" aria-describedby="datatable-tabletools_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Order No</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Sap No</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Product</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Receipt Time</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Receipt By</th>
+            @*<th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Close Date/Shift</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Order Archived</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Parameter Record</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Maintenance Record</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Tool Machine Setup Check List</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Quantity Confirm</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Archived By</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Weekly Check </th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Remarks</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >GetBy</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >GetTime</th>*@
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1"  >Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.Models.Count() > 0)
+        {
+            foreach (var item in Model.Models)
+            {
+                <tr class="gradeA odd" role="row">
+                    <td>@item.WIWorkOrder</td>
+                    <td>@item.WISapPN</td>
+                    <td>@item.WIProductName</td>
+                    <td>@item.WIReceiptTime</td>
+                    <td>@item.WIReceiptBy</td>
+                    @*<td>@item.WICloseDateShift</td>
+                    <td>@item.WIOrderArchived</td>
+                    <td>@item.WIParameterRecord</td>
+                    <td>@item.WIToolMaintenanceRecord</td>
+                    <td>@item.WIToolMachineCheck</td>
+                    <td>@item.WIQuantityConfirm</td>
+                    <td>@item.WIArchivedBy</td>
+                    <td>@item.WIWeeklyCheck</td>
+                    <td>@item.WIRemarks</td>
+                    <td>@item.WIGetBy</td>
+                    <td>@item.WIGetTime</td>*@ 
+                    <td>
+                        <a href="#workOrderModalForm" class="on-default edit-row materialRow" onclick="EditWorkOrder(@item.Id)"><i class="fa fa-pencil"></i></a>
+                        <a class="on-default remove-row" onclick="DeleteWorkOrder(@item.Id)"><i class='fa fa-trash-o'></i></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align:center" colspan="16">NoResult</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- pager -->
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialOtherWithOutType(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialOtherWithOutType(@(Model.Page.CurrentPage - 1))">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="SearchMaterialOtherWithOutType(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialOtherWithOutType(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="SearchMaterialOtherWithOutType(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}

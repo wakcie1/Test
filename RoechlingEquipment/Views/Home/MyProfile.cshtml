@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "AdSetDepartments";
+}
+@model Model.Home.UserLoginInfo
+<body>
+    <div class="panel panel-default" style="width:400px;"> 
+        <div class="panel-heading">
+            <h2 class="panel-title">MyProfile</h2>
+        </div>
+        <div class="panel-body">
+            <div class="text-left bk-bg-white bk-padding-top-40 bk-padding-bottom-10">
+                <div class="row">
+                    <div class="bk-vcenter text-center">
+                        <div class="bk-avatar">
+                            @if (!string.IsNullOrEmpty(Model.AvatarsUrl))
+                            {
+                                <img src="@Model.AvatarsUrl" alt="" class="img-circle bk-img-120 bk-border-light-gray bk-border-3x" onerror='this.src="@Url.Content("~/Content/Home/user2-160x160.jpg")"'>
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Content/Home/user2-160x160.jpg")" alt="" class="img-circle bk-img-120 bk-border-light-gray bk-border-3x" >
+                            }
+                        </div>
+                        <h4 class="bk-margin-top-10 bk-docs-font-weight-300">@Model.UserName</h4>
+                    </div>
+                </div>
+            </div>
+            <hr class="bk-margin-off">
+            <div class="bk-ltr bk-bg-white">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="bk-widget bk-border-off bk-webkit-fix">
+                            <div class="bk-bg-white text-center bk-padding-top-20 bk-padding-bottom-10">
+                                <div class="row">
+                                    <div class="text-left bk-padding-left-20">
+                                        <h4 class="bk-margin-off">General Information</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bs-example">
+                                <div id="carousel-example-generic3" class="carousel bk-carousel-fade slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <a class="panel-body bk-bg-white bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
+                                                <div class="pull-left bk-margin-top-10 bk-margin-right-10">
+                                                    <div class="bk-round bk-bg-darken bk-border-off bk-icon bk-icon-default bk-bg-primary">
+                                                        <i class="fa fa-thumbs-up" style="color:#ffffff"></i>
+                                                    </div>
+                                                </div>
+                                                <h5 class="bk-fg-primary bk-fg-darken bk-margin-off-bottom">Post title</h5>
+                                                <p>
+                                                    <small>@Model.Position</small>
+                                                </p>
+                                            </a>
+                                        </div>
+                                        <div class="item">
+                                            <a class="panel-body bk-bg-white bk-bg-lighten bk-padding-off-top bk-padding-off-bottom">
+                                                <div class="pull-left bk-margin-top-10 bk-margin-right-10">
+                                                    <div class="bk-round bk-bg-darken bk-border-off bk-icon bk-icon-default bk-bg-info">
+                                                        <i class="fa fa-building-o"></i>
+                                                    </div>
+                                                </div>
+                                                <h5 class="bk-fg-info bk-fg-darken bk-margin-off-bottom">Depart Name</h5>
+                                                <p>
+                                                    <small>@Model.DepartName</small>
+                                                </p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <a class="left carousel-control bk-carousel-control bk-carousel-control-white bk-carousel-hide-init" href="#carousel-example-generic3" role="button" data-slide="prev">
+                                        <span class="fa fa-angle-left icon-prev bk-bg-very-light-gray"></span>
+                                    </a>
+                                    <a class="right carousel-control bk-carousel-control bk-carousel-control-white bk-carousel-hide-init" href="#carousel-example-generic3" role="button" data-slide="next">
+                                        <span class="fa fa-angle-right icon-next"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="bk-margin-off">
+            <div class="bk-ltr bk-bg-white">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="bk-bg-white text-center bk-padding-top-20 bk-padding-bottom-10">
+                            <div class="row">
+                                <div class="text-left bk-padding-left-20">
+                                    <h4 class="bk-margin-off">Address</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bk-ltr bk-padding-bottom-20 bk-padding-left-20">
+                <div class="row">
+                    <div class="col-12-4 col-md-12 col-sm-12 col-xs-12 bk-bg-white bk-padding-top-10">
+                        <i class="fa fa-tablet"></i> @Model.PhoneNum
+                    </div>
+                    <div class="col-12-4 col-md-12 col-sm-12 col-xs-12 bk-bg-white bk-padding-top-10">
+                        <i class="fa fa-envelope"></i> @Model.Email
+                    </div>
+                    <div class="col-12-4 col-md-12 col-sm-12 col-xs-12 bk-bg-white bk-padding-top-10">
+                        <i class="fa fa-info-circle"></i> @Model.JobNum
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <a href="@Url.Action("Resort","Home")?accont=@Model.Account" id="btnModify" class="btn btn-primary">Modify password</a>
+                <button class="btn btn-default" id="btnCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,15 @@
+﻿<div class="panel-heading">
+    <h2 class="panel-title">ImportWorkOrder</h2>
+</div>
+<div class="panel-body bk-noradius"> 
+    <div class="editor-field">
+        <div class="col-md-5">
+            @Html.TextBox("file", "", new { type = "file", Id = "workOrderFile" })
+        </div>
+        <div class="col-md-7" style="text-align:center">
+            <a id="workOrderTempDown" style="color:#428bca" data-url="@Url.Action("WorkOrderTempFile","Material")">Temp download</a>
+            <button id="workOrderUpload" class="bk-margin-right-5 btn btn-primary">Upload</button>
+            <button class="btn btn-default" id="workOrderCancel">Cancel</button>
+        </div>
+    </div>
+</div>

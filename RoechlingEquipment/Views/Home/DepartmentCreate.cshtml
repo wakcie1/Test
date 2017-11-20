@@ -1,0 +1,97 @@
+﻿@using Common
+@{
+    ViewBag.Title = "DepartmentCreate";
+}
+<script src="@Url.Content("~/Content/assets/vendor/js/jquery-2.1.1.min.js")"></script>
+@Html.RenderCss("/Content/assets/vendor/bootstrap/css/bootstrap.min.css", "/Content/assets/css/style.css", "/Content/assets/css/add-ons.min.css", "/Content/assets/plugins/magnific-popup/css/magnific-popup.css")
+
+<body style="height:500px;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Create Department</h2>
+        </div>
+        <form id="dpCreate" class="form-horizontal mb-lg" novalidate="novalidate">
+            <input type="hidden" id="departmentId" />
+            <div class="panel-body bk-noradius">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Department name</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="Name" class="form-control" placeholder="Department name" maxlength="50" id="departmentName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Superior department name</label>
+                    <div class="col-sm-5">
+                        <input type="text" name="ParentName" class="form-control" placeholder="Superior department name" disabled="disabled" id="ParentName">
+                        <input type="hidden" id="ParentId" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">State</label>
+                    <div class="col-sm-5">
+                        <div class="radio-custom radio-inline">
+                            <input type="radio" id="staruse" name="isvalid-radios" value="1" checked>
+                            <label for="inline-radio1"> Enable</label>
+                        </div>
+                        <div class="radio-custom radio-inline">
+                            <input type="radio" id="stopuse" name="isvalid-radios" value="0" disabled>
+                            <label for="inline-radio1"> Disable</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Department description</label>
+                    <div class="col-sm-5">
+                        <textarea rows="5" class="form-control" placeholder="Department description" id="DepartDesc" maxlength="200"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary" id="dmConfirm">Confirm</button>
+                        <button type="reset" class="btn btn-default" id="departmenRest">reset</button>
+                        <button class="btn btn-default modal-dismiss">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+@Html.RenderJs("/Content/assets/plugins/pnotify/js/pnotify.custom.js", "/Content/assets/plugins/magnific-popup/js/magnific-popup.js", "/Content/assets/plugins/jquery-validation/js/jquery.validate.js")
+<script src="~/Content/Home/DepartmentEdit.js?v=@CommonHelper.JsVision()"></script>
+<script>
+        var basePath = '@Url.Content("~/")';
+        var culture='@CultureHelper.GetCurrentCulture()';
+        PageInit();
+        (function ($) {
+            $.extend($.validator.messages, {
+                required: "please input the value",
+            });
+            var $summaryForm = $("#dpCreate");
+            $summaryForm.validate({
+                errorPlacement: function (error, element) {
+                    $(element).parent().after(error);
+                },
+                wrapper: "div",
+                showErrors: function (errorMap, errorList) {
+                    // 遍历错误列表
+                    for (var obj in errorMap) {
+                        // 自定义错误提示效果
+                        $('#' + obj).parent().addClass('has-error');
+                    }
+                    // 此处注意，一定要调用默认方法，这样保证提示消息的默认效果
+                    this.defaultShowErrors();
+                },
+                success: function (label) {
+                    $(label).parent().prev().removeClass('has-error');
+                }
+            });
+
+
+        }).apply(this, [jQuery]);
+</script>
+
+

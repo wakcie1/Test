@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+@using Common
+<div class="page-header">
+    <div class="pull-left">
+        <ol class="breadcrumb visible-sm visible-md visible-lg">
+            <li><a href="#"><i class="icon fa fa-plus-square"></i>Create</a></li>
+        </ol>
+    </div>
+    <div class="pull-right">
+
+    </div>
+</div>
+
+<div class="panel-body  panel-bodynopadding">
+    <div class="tabs">
+        <ul class="nav nav-tabs" id="tabs">
+            <li>
+                <a id="proInfoTab" href="#problemInfo" data-toggle="tab">Problem Info <i class="fa fa-comment-o"></i></a>
+            </li>
+            <li>
+                <a id="proActionTab" href="#problemAction" data-toggle="tab">Action</a>
+            </li>
+            <li>
+                <a id="proStandTab" href="#problemStand" data-toggle="tab" class="hidden">Standardlization</a>
+            </li>
+            <li>
+                <a id="proPreiewTab" href="#problemPreview" data-toggle="tab">Preview</a>
+            </li>
+            <li>
+                <a id="timeTrackingTab" href="#timeTracking" data-toggle="tab"  class="hidden">TimeTracking</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="problemInfo" class="tab-pane">
+                @Html.Partial("ProblemInfoPage")
+            </div>
+            <div id="problemAction" class="tab-pane">
+                @Html.Partial("ActionInfoPage")
+            </div>
+            <div id="problemStand" class="tab-pane">
+                @Html.Partial("StandardlizationInfoPage")
+            </div>
+            <div id="problemPreview" class="tab-pane">
+                @Html.Partial("PreviewInfoPage")
+            </div>
+            <div id="timeTracking" class="tab-pane">
+                @Html.Partial("ProblemTimeTracking")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input type="hidden" id="proId" value="@ViewBag.ProId" /> 
+<input type="hidden" id="proProcessStatus" value="0" />
+<input type="hidden" id="proOwner" />
+<input type="hidden" id="approveLayeredAuditflag" value="0"/>
+<input type="hidden" id="approveVerificationflag" value="0" />
+<input type="hidden" id="approveStandardizationflag" value="0" />
+
+<input type="hidden" id="toollisturl" value="@Url.Action("GetToolList","Problem")" />
+<input type="hidden" id="machinelisturl" value="@Url.Action("GetMachineList","Problem")" />
+<input type="hidden" id="materiallisturl" value="@Url.Action("SapAutoComplete","Problem")" />
+<input type="hidden" id="workorderlisturl" value="@Url.Action("WorkOrderAutoComplete","Problem")" />
+<input type="hidden" id="processlisturl" value="@Url.Action("GetProcessList","Problem", new { isNeedDefalut = false })" />
+<input type="hidden" id="sourcelisturl" value="@Url.Action("GetSourceList","Problem", new { isNeedDefalut = false })" />
+<input type="hidden" id="defectcodetypeurl" value="@Url.Action("GetDefectCodeTypeList","Problem",new { isNeedDefalut = false })" />
+<input type="hidden" id="defectcodelisturl" value="@Url.Action("GetDefectCodeList","Problem",new { isNeedDefalut = false })" />
+<input type="hidden" id="severitylisturl" value="@Url.Action("GetSeverityList","Problem")" />
+<input type="hidden" id="statuslisturl" value="@Url.Action("GetStatusList","Problem")" />
+<input type="hidden" id="problemunionurl" value="@Url.Action("GetProblemUnionInfo","Problem")" />
+<input type="hidden" id="userlisturl" value="@Url.Action("UserAutoComplete","Home")" />
+<input type="hidden" id="userinfourl" value="@Url.Action("GetUserByJobNumber","Home")" />
+
+
+
+<script src="@Url.Content("~/Content/Problem/SolvingTeam.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/QualityAlert.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/SortingActivity.js")?v=@CommonHelper.JsVision()"></script>
+
+<script src="@Url.Content("~/Content/Problem/ActionFactoranalysis.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/ActionWhyAnalysis.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/ActionPreventiveMeasures.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/ActionCorrective.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/ActionContainment.js")?v=@CommonHelper.JsVision()"></script>
+
+<script src="@Url.Content("~/Content/Problem/Standardization.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/StandLayeredAudit.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/StandVerification.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/ProblemPreview.js")?v=@CommonHelper.JsVision()"></script>
+<script src="@Url.Content("~/Content/Problem/Problem.js")?v=@CommonHelper.JsVision()"></script>
+

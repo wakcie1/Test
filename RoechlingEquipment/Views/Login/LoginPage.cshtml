@@ -1,0 +1,244 @@
+﻿@{
+    Layout = null;
+}
+@using Common
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8" />
+
+    <title>Login | Fire - Admin Template</title>
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="@Url.Content("~/Content/assets/ico/favicon.ico")" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="@Url.Content("~/Content/assets/ico/apple-touch-icon.png")" />
+    <link rel="apple-touch-icon" sizes="57x57" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-57x57.png")" />
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-72x72.png")" />
+    <link rel="apple-touch-icon" sizes="76x76" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-76x76.png")" />
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-114x114.png")" />
+    <link rel="apple-touch-icon" sizes="120x120" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-120x120.png")" />
+    <link rel="apple-touch-icon" sizes="144x144" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-144x144.png")" />
+    <link rel="apple-touch-icon" sizes="152x152" href="@Url.Content("~/Content/assets/ico/apple-touch-icon-152x152.png")" />
+
+    <!-- start: CSS file-->
+    <!-- Vendor CSS-->
+    <link href="@Url.Content("~/Content/assets/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/vendor/skycons/css/skycons.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/vendor/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/plugins/magnific-popup/css/magnific-popup.css")" rel="stylesheet" />
+    <!-- Plugins CSS-->
+    <link href="@Url.Content("~/Content/assets/plugins/bootkit/css/bootkit.css")" rel="stylesheet" />
+
+    <!-- Theme CSS -->
+    <link href="@Url.Content("~/Content/assets/css/jquery.mmenu.css")" rel="stylesheet" />
+
+    <!-- Page CSS -->
+    <link href="@Url.Content("~/Content/assets/css/style.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/assets/css/add-ons.min.css")" rel="stylesheet" />
+
+    <style>
+        footer {
+            display: none;
+        }
+
+        html, body {
+            height: 100%;
+            /*display: flex;
+            justify-content: center;
+            align-items: Center;*/
+        }
+    </style>
+</head>
+<body style="background:url(/Content/Home/login_background.jpg) no-repeat;background-size:100% 100%">
+    <!-- Start: Content -->
+    <div class="container-fluid content">
+        <div class="row">
+            <!-- Main Page -->
+            <div id="content" class="col-sm-12 full">
+                <div class="row">
+                    <div class="login-box">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="bk-margin-bottom-20 text-center">
+                                    <img src="@Url.Content("~/Content/Home/roechling_logo_print_de.png")" class="img-responsive" alt="" style="padding-left:60px;padding-top:15px;width:355px;" />
+                                    @*<h4>Log In</h4>*@
+                                </div>
+                                <form class="form-horizontal login" action="@Url.Action("Login","Login")" method="post">
+                                    <span class="help-block" id="loginHelp" style="padding-left:20px;color:red"></span>
+                                    <div class="bk-padding-left-20 bk-padding-right-20">
+                                        <label>@Resources.LLanguage</label>
+                                        <div class="form-group">
+                                            <select id="selectLaguage" name="select" class="form-control" size="1">
+                                                <option value="en-US">English</option>
+                                                <option value="zh-CN">中文</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="bk-padding-left-20 bk-padding-right-20">
+                                        <div class="form-group">
+                                            <label>@Resources.LPlantNo</label>
+                                            @Html.DropDownList("DBType", ViewBag.DBType as IEnumerable<SelectListItem>, new { @class = "form-control", @size = "1" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>@Resources.LAccount</label>
+                                            <div class="input-group input-group-icon">
+                                                <input type="text" class="form-control bk-radius" id="username" placeholder="Username" name="account" />
+                                                <span class="help-block" id="usernameHelp" style="color:red;"></span>
+                                                <span class="input-group-addon">
+                                                    <span class="icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>@Resources.LPassword</label>
+                                            <div class="input-group input-group-icon">
+                                                <input type="password" class="form-control bk-radius" id="password" placeholder="Password" name="password" />
+                                                <span class="help-block" id="passwordHelp" style="color:red;"></span>
+                                                <span class="input-group-addon">
+                                                    <span class="icon">
+                                                        <i class="fa fa-key"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group bk-margin-top-20 bk-margin-bottom-10">
+                                            <div class="col-sm-8">
+                                                <div class="checkbox-custom checkbox-default">
+                                                    <input id="RememberMe" name="rememberme" type="checkbox" />
+                                                    <label for="RememberMe">Remember Me</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4 text-right" style="padding-right:0px;">
+                                                <button type="submit" class="btn btn-primary hidden-xs">Log In</button>
+                                                <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-20">Log In</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div style="padding-left:17px;">
+                                    forget the password? <a id="forgetBtn" href="#">Contact Admin!</a><span style="padding-left:73px"> Version: @CommonHelper.JsVision()</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- End Main Page -->
+        </div>
+    </div>
+    <input type="hidden" id="basepath" value="@ViewBag.BasePath" />
+    <input type="hidden" id="culture" value="@ViewBag.CurrentCulture" />
+    <div id="forget" class="modal-block modal-block-primary mfp-hide">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Are you sure?</h2>
+            </div>
+            <div class="panel-body bk-noradius">
+                <div class="modal-wrapper">
+                    <div class="modal-icon">
+                        <i class="fa fa-question-circle"></i>
+                    </div>
+                    <div class="modal-text">
+                        <h4>Primary</h4>
+                        <p>Are you sure that you want to Contact the Admin?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button id="dialogConfirm" class="btn btn-primary modal-confirm">Confirm</button>
+                        <button id="dialogCancel" class="btn btn-default modal-dismiss">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/container-->
+    <!-- start: JavaScript-->
+    <!-- Vendor JS-->
+    <script src="@Url.Content("~/Content/assets/vendor/js/jquery.min.js")?v=@CommonHelper.JsVision()"></script>
+    <script src="@Url.Content("~/Content/assets/vendor/js/jquery-2.1.1.min.js")?v=@CommonHelper.JsVision()"></script>
+    <script src="@Url.Content("~/Content/assets/plugins/magnific-popup/js/magnific-popup.js")"></script>
+    <!-- Plugins JS-->
+    <script src="@Url.Content("~/Content/assets/plugins/cookie/jquery.cookie.js")?v=@CommonHelper.JsVision()"></script>
+
+    <!-- Pages JS -->
+    <script src="@Url.Content("~/Content/Home/login.js")?v=@CommonHelper.JsVision()"></script>
+    <script type="text/javascript">
+        var path = $("#basepath").val();
+        var cult = $("#culture").val();
+        var config = {
+            basepath: path,
+            culture: cult
+        };
+        PageInit(config);
+
+
+
+        $("#forgetBtn").on('click', function () {
+            $.magnificPopup.open({
+                items: {
+                    src: '#forget',
+                    type: 'inline'
+                },
+                preloader: false,
+                modal: true,
+                callbacks: {
+                    open: function () {
+                        $("#dialogConfirm").on('click', function (e) {
+                            var params = {
+                                Account: $("#username").val(),
+                            };
+                            $.ajax({
+                                type: "Post",
+                                url: "Login/ContactAdmin",
+                                async: true,
+                                data: JSON.stringify(params),
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    if (data) {
+                                        if (data.IsSuccessful) {
+                                            alert("send the mail to Admin");
+                                            $.magnificPopup.close();
+                                        }
+                                        else {
+                                            alert(data.Message);
+                                            $.magnificPopup.close();
+                                        }
+                                    }
+                                    else {
+                                        alert("error");
+                                        $.magnificPopup.close();
+                                    }
+                                }
+                            });
+
+                        });
+                    },
+                    close: function () {
+                        $("#dialogConfirm").off('click');
+                    }
+                }
+            });
+        });
+
+        $("#dialogCancel").on('click', function (e) {
+            $.magnificPopup.close();
+        });
+
+    </script>
+
+</body>
+
+</html>

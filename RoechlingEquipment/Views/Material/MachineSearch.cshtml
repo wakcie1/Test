@@ -1,0 +1,85 @@
+﻿@using Model.Material;
+@model MaToolSearchResultModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<table class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-tabletools" role="grid" aria-describedby="datatable-tabletools_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 15%;">Equipment/FixtureName</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 15%;">Equipment</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 15%;">FixtureNo</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 15%;">Type</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 30%;">SerialNumber</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 30%;">Quantity</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 30%;">ManufacturedDate</th>
+            <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 10%;">Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @if (Model.Models.Count() > 0)
+        {
+            foreach (var item in Model.Models)
+            {
+                <tr class="gradeA odd" role="row">
+                    <td>@item.BMEquipmentName</td>
+
+                    <td>
+                        @item.BMEquipmentNo
+                    </td>
+
+                    <td>@item.BMFixtureNo</td>
+
+                    <td>@item.BMType</td>
+                    <td>@item.BMSerialNumber</td>
+                    <td>@item.BMQuantity</td>
+                    <td>@item.BMManufacturedDate</td>
+                    <td>
+                        <a href="#machineModalForm" class="on-default materialRow" onclick="EditMachine(@item.Id)"><i class="fa fa-pencil"></i></a>
+                        <a class="on-default remove-row" onclick="DeleteMachine(@item.Id)"><i class='fa fa-trash-o'></i></a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td style="text-align:center" colspan="8">NoResult</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- pager -->
+@if (Model.Page.EndPage >= 1)
+{
+    <ul class="pagination">
+        @if (Model.Page.CurrentPage > 1)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="SearchToolListWithOutType(1)">First</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="SearchToolListWithOutType(@(Model.Page.CurrentPage - 1))">Previous</a>
+            </li>
+        }
+
+        @for (var page = Model.Page.StartPage; page <= Model.Page.EndPage; page++)
+        {
+            <li class="@(page == Model.Page.CurrentPage ? "active" : "")">
+                <a href="javascript:void(0)" onclick="SearchToolListWithOutType(@page)">@page</a>
+            </li>
+        }
+        @if (Model.Page.CurrentPage < Model.Page.TotalPages)
+        {
+            <li>
+                <a href="javascript:void(0)" onclick="SearchToolListWithOutType(@(Model.Page.CurrentPage + 1))">Next</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" onclick="SearchToolListWithOutType(@(Model.Page.TotalPages))">Last</a>
+            </li>
+        }
+    </ul>
+}
