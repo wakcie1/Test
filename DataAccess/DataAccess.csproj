@@ -63,7 +63,6 @@
     <Compile Include="Problem\ProblemDAL.cs" />
     <Compile Include="MaterialDAL.cs" />
     <Compile Include="DepartmentDAL.cs" />
-    <Compile Include="HomeDAL.cs" />
     <Compile Include="MaToolDAL.cs" />
     <Compile Include="Problem\ProblemStandardizationDAL.cs" />
     <Compile Include="Problem\ProblemVerificationDAL.cs" />

@@ -738,8 +738,6 @@ namespace Common
 
         /// <summary>
         /// 描述：将base64转成图片
-        /// 创建标识：瞿玲莉24592
-        /// 创建时间：2016-08-29
         /// </summary>
         /// <param name="base64">base64</param>
         /// <param name="fileName">保存图片的文件名</param>

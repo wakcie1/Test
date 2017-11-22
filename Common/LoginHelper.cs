@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Common
 {
     /// <summary>
-    /// SaaS Helper
+    /// Helper
     /// </summary>
     public class LoginHelper
     {

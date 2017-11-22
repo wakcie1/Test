@@ -19,15 +19,9 @@ namespace Business
 {
     public class HomeBusiness
     {
-        private static HomeDAL _homeDal = new HomeDAL();
         private static AccountDAL _accountDal = new AccountDAL();
         private static UserDAL _userdal = new UserDAL();
         private static DepartmentDAL _departmentDal = new DepartmentDAL();
-
-        public static bool UserLogin(string loginName, string password, string isAdmin, out string workNo)
-        {
-            return _homeDal.UserLogin(loginName, password, isAdmin, out workNo);
-        }
 
         public static UserLoginInfo Login(string account, string password)
         {

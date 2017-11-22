@@ -57,12 +57,7 @@ namespace Common
             }
             catch (Exception ex)
             {
-                #region 系统异常记录天网日志
-
-                var userinfo = LoginUser;
-                var jobnum = userinfo == null ? "" : userinfo.UserName;
-
-                #endregion
+           
             }
         }
     }
